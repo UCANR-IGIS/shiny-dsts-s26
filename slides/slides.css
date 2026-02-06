@@ -70,4 +70,8 @@ div.functions {
   margin-left:1em !important;
   font-family: monospace;
 }
+div.fakecode {
+  font-family: monospace;
+  white-space: pre !important;
+}
 

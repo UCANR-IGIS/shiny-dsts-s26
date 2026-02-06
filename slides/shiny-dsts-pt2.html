@@ -163,14 +163,41 @@ Part 2: Creating a Place Based DST
 </section>
 <section id="qualities-of-a-good-dst" class="slide level2 double-spaced-left">
 <h2>Qualities of a good DST</h2>
-<pre><code>- simple
-- converts info into a decision aide</code></pre>
 <ul>
-<li>exercise we’re going to do
-<ul>
-<li>single page application</li>
-</ul></li>
+<li>simple<br>
+</li>
+<li>user-friendly<br>
+</li>
+<li>responsive<br>
+</li>
+<li>focused on a decision space<br>
+</li>
+<li>should be ‘obvious’ how to use - for the <em>user</em><br>
+</li>
+<li>trap errors<br>
+</li>
+<li>convert raw data into actionable info<br>
+</li>
+<li>convey the limits of certainty, the model</li>
 </ul>
+</section>
+<section id="shiny-methods-observe" class="slide level2">
+<h2>Shiny Methods: <code>observe()</code></h2>
+<p>Use an observe to run code that doesn’t return something used by another object.</p>
+<pre><code>observe({
+ ## This code is reactive 
+ ## It will run once when the app loads
+ ## Then it will run whenever objects in it are updated
+ ## 
+})</code></pre>
+<p>observeEvent - same but reactivity is controlled</p>
+</section>
+<section id="shiny-methods-custom-css" class="slide level2">
+<h2>Shiny Methods: custom css</h2>
+<p>You can include CSS files in your app.</p>
+<pre><code>tags$head(
+  tags$link(rel = "stylesheet", type = "text/css", href = "my_styles.css")
+)</code></pre>
 
 </section></section>
     </div>
