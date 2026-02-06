@@ -1,7 +1,8 @@
 if (!requireNamespace("pak")) install.packages("pak")
 
 ## Required packages
-pkgs_req <- c("tidyverse", "here", "conflicted", "usethis", "markdown", "downlit", "xml2", "weathermetrics", "openmeteo")
+pkgs_req <- c("sf", "leaflet", "tidyverse", "here", "conflicted", "usethis", "markdown", "downlit", 
+              "xml2", "weathermetrics", "openmeteo")
 
 ## See which ones are missing
 (pkgs_missing <- pkgs_req[!(pkgs_req %in% installed.packages()[,"Package"])])
@@ -16,10 +17,8 @@ if (length(pkgs_missing)==0) cat("ALL PACKAGES WERE INSTALLED SUCCESSFULLY \n")
 
 ## Compute wet bulb global temperature
 if (!require(HeatStress)) {
-  remotes::install_github("anacv/HeatStress")  
+  pak::pkg_install("anacv/HeatStress")  
 }
-
-
 
 ##########################################
 ## TIPS
