@@ -1,14 +1,32 @@
 if (!requireNamespace("pak")) install.packages("pak")
 
 ## Required packages
-pkgs_req <- c("sf", "leaflet", "tidyverse", "here", "conflicted", "usethis", "markdown", "downlit", 
-              "xml2", "weathermetrics", "openmeteo")
+pkgs_req <- c("tidyverse", "sf", "leaflet", "here", "conflicted", "usethis", "markdown", "downlit", 
+              "xml2", "weathermetrics")
 
 ## See which ones are missing
 (pkgs_missing <- pkgs_req[!(pkgs_req %in% installed.packages()[,"Package"])])
 
 ## Install missing ones
 if (length(pkgs_missing)) pak::pkg_install(pkgs_missing, dependencies=TRUE)
+
+## tibblify is not on cran right now
+if (!require(tibblify)) {
+  pak::pkg_install("wranglezone/tibblify")
+}
+
+## Compute wet bulb global temperature with HeatStress
+if (!require(HeatStress)) {
+  pak::pkg_install("anacv/HeatStress")  
+}
+
+## opemmeteo is not on cran right now (a dependent package got archived)
+if (!require(openmeteo)) {
+  install.packages('openmeteo', repos = c('https://tpisel.r-universe.dev', 'https://cloud.r-project.org'))
+}
+
+
+
 
 ## Re-run the check for missing packages
 pkgs_missing <- pkgs_req[!(pkgs_req %in% installed.packages()[,"Package"])]
