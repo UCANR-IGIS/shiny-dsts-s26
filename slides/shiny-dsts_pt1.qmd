@@ -1,0 +1,389 @@
+---
+title: "Building Decision Support Tools with Shiny"
+subtitle: "Part 1: Getting Started"
+format:
+  revealjs:
+    theme: simple
+    css: slides.css
+    width: 1600
+    height: 900
+    title-slide-attributes:
+      data-visibility: hidden
+---
+
+```{r setup, include=FALSE}
+library(shiny)
+library(glue)
+```
+
+# {#building-dsts-with-shiny data-menu-title="Building DSTs with Shiny"}
+
+<h1 class="title">Building Decision Support<br/>Tools with Shiny</h1>
+
+<p class="subtitle">Part 1: Getting Started</p>
+
+::: {layout-ncol=2 style="text-align:center; margin-top:2rem;"}
+![](./images/igis-logo_400x120.png)
+
+![](./images/gif-log_360x140.png){style="height:110px; width:285px"}
+:::
+  
+## {#ucanr data-menu-title="UC ANR"}
+
+![](./images/about-anr_900x540.png){style="width:1260px;"}
+
+\
+
+## About Me: Some of My R Packages
+
+```{r echo = FALSE}
+card_farm <- function(title_img_md_tbl) {
+  library(htmltools)
+  
+  ind_cards_lst <- tagList()
+  
+  for (i in 1:nrow(title_img_md_tbl)) {
+    this_card <- div(
+      style = "width:420px; border:4px solid #00428c; background-color:#edf3ff;",
+      
+      div(title_img_md_tbl$title[i], 
+          style = "text-align:center; margin-top:0; background-color:#79b8ed; font-weight:bold; padding:0.3em;"),
+      
+      div(
+        img(src = title_img_md_tbl$img[i], style = "padding:20px;"),
+        
+        # title_img_md_tbl$desc[i],
+        # br(),
+        # a(href = title_img_md_tbl$url[i], title_img_md_tbl$url[i], style = "font-size:80%;"),
+        
+        p(style = "margin-block-start:0; font-size:smaller;",
+          title_img_md_tbl$desc[i],
+          br(),
+          a(href = title_img_md_tbl$url[i], title_img_md_tbl$url[i], style = "font-size:80%;")),
+        
+        #HTML(markdown::mark(title_img_md_tbl$md[i])),
+        style = "padding:0.2em; text-align:center"
+        )
+      
+      )
+    ind_cards_lst <- tagAppendChild(ind_cards_lst, this_card)
+  }
+  
+  ## Return a tagList
+  tagList(
+    div(
+      style="display:flex; flex-flow:row wrap; justify-content:center; align-items:start; column-gap:50px; row-gap:40px;",
+      ind_cards_lst
+    )
+  )
+}
+```
+
+```{r results='asis', echo = FALSE}
+library(tibble)
+library(htmltools)
+
+title_img_md_tbl <- tribble(
+  ~title, ~img, ~desc, ~url,
+  
+  "degday", "./images/degday_hexlogo_v1a_140x162.png", "Compute degree days in R", "https://ucanr-igis.github.io/degday/",
+  
+  "uasimg", "./images/uasimg_hex-logo1_140x162.png", "Data management utilities for drone mapping", "https://ucanr-igis.github.io/uasimg/",
+  
+  "caladaptR", "./images/caladaptr-logo_140x162.png", "Import climate data from Cal-Adapt using the API", "https://ucanr-igis.github.io/caladaptr/"
+
+)
+
+## removed because there is only room for 3 cards:
+## "tlocoh", "", "Homerange construction and spatial-temporal analysis for wildlife tracking data.", "http://tlocoh.r-forge.r-project.org/"
+
+card_farm(title_img_md_tbl)
+```
+
+\
+
+## About Me: Some of My Shiny Apps
+
+:::{#applist}
+
+**Precision Irrigation Calculator**  
+<https://ucanr-igis.shinyapps.io/irrigation-calc/>{target="_blank"}
+
+**Tree Chill Calculator for Cherry**  
+<https://ucanr-igis.shinyapps.io/cherrychill/>{target="_blank"}
+
+**Navel Orangeworm IPM Economics Calculator**  
+<https://ucanr-igis.shinyapps.io/now_ipm_econ/>{target="_blank"}
+
+**Pistachio Nut Growth Calculator**  
+<https://ucanr-igis.shinyapps.io/pist_gdd/>{target="_blank"}
+
+**Chill Portions Under Climate Change Calculator**  
+<https://ucanr-igis.shinyapps.io/chill/>{target="_blank" rel="noopener"}
+
+**Stock Pond Volume Calculator**  
+<https://ucanr-igis.shinyapps.io/PondCalc/>{target="_blank"}
+
+:::
+
+<!---- removed for space 
+**Drone Mission Planner for Reforestation Monitoring**  
+<https://ucanr-igis.shinyapps.io/uav_stocking_survey/>{target="_blank"}
+----->
+
+## What is Shiny? {.double-spaced-centered}
+
+A delivery vehicle for a R script.
+
+A R package that simplifies creating web apps from R code.
+
+A web platform that allows you to create HTML pages<br/>with R components.
+
+
+
+## Architecture of a Shiny App {#shiny-architecture data-menu-title="Shiny Architecture"}
+
+![](./images/shiny-architecture_1165x456.png)
+
+
+## Workshop Goals {.double-spaced-centered}
+
+Understand how Shiny works.
+
+Understand the principles of reactivity.
+
+Be able to create a simple shiny app scratch.
+
+Be able to better utilize documentation and GenAI tools.
+
+Take a decision support model and turn it into a Shiny app.
+
+
+## Demo {.double-spaced-centered}
+
+Let's make a new Shiny app!
+
+::: {.notes}
+Show them how to create a new Shiny in RStudio
+
+
+:::
+
+
+## Old Faithful: What We Learned {.double-spaced-left}
+
+A Shiny app is just R code.
+
+::: {.indented4}
+ui section - sets up the HTML elements
+
+server section - defines interactivity
+:::
+
+It's usually a single file called app.R in a folder.
+
+Running a Shiny app requires a R session.
+
+When you run a Shiny app locally, it takes over your R session.
+
+## {#server-ui-shiny data-menu-title="Server-UI Interaction"}
+
+![](./images/shiny-server-ui_1000x610.png)
+
+## `app01.R` {#app1-preview}
+
+::::: {.columns}
+
+::: {.column width="58%"}
+**Penguin Data Explorer**
+
+- Start a new Shiny app from scratch.
+
+- One input - select box
+
+- Two outputs - plot and table
+
+:::
+
+::: {.column width="38%"}
+![](./images/pt1_app01-screenshot_540x850.png){.appscreenshot}
+:::
+
+:::::
+
+## `app01.R` Reactivity
+
+
+<object type="image/svg+xml" data="images/pt1_app01-reactmap_opt.svg" class="centered"></object>
+
+## Useful Functions
+
+::::: {.columns}
+
+::: {.column width="40%"}
+
+UI Elements
+
+<div class="functions">
+p()  
+strong()  
+h1()  
+h2()  
+h3()  
+</div>
+
+:::
+
+::: {.column width="26%"}
+Layout:
+
+<div class="functions">
+br()  
+hr()  
+div()  
+</div>
+
+:::
+
+::: {.column width="26%"}
+Text:
+
+<div class="functions">
+glue()
+</div>
+
+:::
+
+:::::
+
+\
+
+::: {.callout-tip .indented4 .indented4r title="More HTML Helpers"}
+See also [`htmltools`](https://rstudio.github.io/htmltools/) package
+:::
+
+## Output-Render Function Pairs
+
+```{r echo = FALSE, results='asis'}
+library(tibble)
+library(kableExtra)
+
+ui_render_fun_tbl <- tribble(
+  ~"UI Function (Placement)", ~"Render Function",
+  "textOutput()", "renderText()",
+  "verbatimTextOutput()", "renderPrint()",
+  "plotOutput()", "renderPlot()",
+  "tableOutput()", "renderTable()",
+  "imageOutput()", "renderImage()",
+  "uiOutput()", "renderUI()",
+  "htmlOutput()", "renderUI()"
+)
+
+knitr::kable(ui_render_fun_tbl) |>
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = TRUE) |>
+  column_spec(column = 1:2, monospace = TRUE)
+```
+
+
+::: {.callout-tip .indented4 .indented4r title="More Demo Apps"}
+`shiny::runExample()`
+:::
+
+
+## `app02.R` {#app2-preview}
+
+::::: {.columns}
+
+::: {.column width="58%"}
+**Penguin Data Explorer <u>with Randomizer</u>**
+
+- Add second select input: Island
+
+- Add a percent to sample slider
+
+- Same outputs as #1 - plot and table
+
+- To build this we're going to need to use a `reactive()` object
+
+:::
+
+::: {.column width="38%"}
+![](./images/pt1_app02-screenshot_560x830.png){.appscreenshot}
+:::
+
+:::::
+
+## `app02.R` Reactivity
+
+
+<object type="image/svg+xml" data="images/pt1_app02-reactmap_opt.svg" class="centered"></object>
+
+
+## `app02.R` Reactives {.double-spaced-left}
+
+Use a reactive whenever you need an intermediate object.
+
+Reactives can store *any* R object (e.g., data frame, list, etc.).
+
+Reactives are often used to store data in decision support tools that wrangle data.
+
+You can use reactive in render functions or other reactives - just remember to include the `()`.
+
+## `app03.R` {#app3-preview}
+
+::::: {.columns}
+
+::: {.column width="58%"}
+**Penguin Data Explorer with <u>Submit button</u>**
+
+Reactivity in Shiny is automatic by default. That's usually a good thing, but sometimes you want to control the reactivity.
+
+In this exercise we will:
+
+- Add an action button
+
+- Bind the reactive to the action button, so its only updates when the button is pressed.
+
+This is also known as **delayed reactivity**.
+
+:::
+
+::: {.column width="38%"}
+![](./images/pt1_app03-screenshot_560x850.png){.appscreenshot}
+:::
+
+:::::
+
+## `app03.R` Reactivity
+
+
+<object type="image/svg+xml" data="images/pt1_app03-reactmap_opt.svg" class="centered"></object>
+
+
+## `app03.R` Delayed Reactivity {.double-spaced-left}
+
+Use `bindEvent()` to control when a reactive will update.
+
+To update for more than one condition, you can use:
+
+`bindEvent(<<reactive>>, c(input$btn1, input$btn2))`
+
+Also works for observers.
+
+## Publishing Shiny Apps {#publishing-shiny-apps}
+
+For other people to use your Shiny app, it must be published to a server that is running Shiny Server.
+
+Options include Posit Cloud Connect, and various commercial services.
+
+Look for the 'Publish' button in RStudio, and Publish command in Positron.
+
+::: {.callout-tip .indented4 .indented4r title="Publishing Shiny Apps on a Standard Web Server"}
+The [`shinylive`](https://posit-dev.github.io/r-shinylive/) package can convert your Shiny app to a version of R that runs in the browser so doesn't require Shiny Server. This allows you to host it on a standard web server.  
+::: 
+
+
+
+
+

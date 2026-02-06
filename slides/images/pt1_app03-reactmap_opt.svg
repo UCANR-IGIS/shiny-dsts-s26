@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="1300" height="675" version="1.1" viewBox="0 0 343.96 178.59" xmlns="http://www.w3.org/2000/svg">
+ <style>::selection {
+  background-color: #ffe28c;
+  color: white;
+}::-moz-selection {
+  background-color: #ffe28c;
+  color: white;
+}</style>
+ <defs>
+  <marker id="ConcaveTriangle" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+   <path transform="scale(.7)" d="m-2-4 11 4-11 4c2-2.33 2-5.66 0-8z" fill="context-stroke" fill-rule="evenodd"/>
+  </marker>
+ </defs>
+ <g>
+  <g stroke-width=".79">
+   <path d="m10.076 18.262h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821"/>
+   <path d="m283.89 41.295h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"/>
+   <path d="m281.8 109.53h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"/>
+  </g>
+  <path d="m185.93 87.518c19.196 0.40783 43.721-34.176 62.267-34.013" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-width=".69741"/>
+  <path d="m185.93 88.482c19.196-0.40784 43.721 34.176 62.267 34.013" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-width=".69741"/>
+ </g>
+ <g fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19">
+  <text x="9.1169281" y="15.506719" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.1169281" y="15.506719" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput("in_species")</tspan><tspan x="9.1169281" y="23.444218" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <text x="225.8985" y="34.102005" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="225.8985" y="34.102005" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">plotOutput("out_peng_flip_body")</tspan><tspan x="225.8985" y="42.039505" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <text x="226.19925" y="146.26424" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="226.19925" y="146.26424" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">tableOutput("out_peng_sumstats")</tspan><tspan x="226.19925" y="154.20174" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+ </g>
+ <g>
+  <path d="m10.076 58.601h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"/>
+  <text x="9.1169281" y="55.845558" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.1169281" y="55.845558" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput("in_island")</tspan><tspan x="9.1169281" y="63.783058" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <path d="m10.076 97.455h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"/>
+  <text x="9.1169281" y="94.699684" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.1169281" y="94.699684" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">sliderInput("in_pct")</tspan><tspan x="9.1169281" y="102.63718" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <path d="m172.82 75.617h-34.455l13.934 12.565-13.934 12.565h34.455l13.437-12.565z" fill="#fae" stroke="#504" stroke-width=".79"/>
+ </g>
+ <path d="m49.55 109.89c25.775-0.81347 36.059-1.2841 48.257-7.0106 12.031-5.6479 20.04-10.573 35.877-11.594" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-dasharray="0.478108, 0.478108" stroke-width=".47811"/>
+ <path d="m48.165 30.828c26.243 1.4474 34.894 4.4826 46.154 15.941 15.211 15.479 19.911 31.398 37.517 32.229" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-dasharray="0.64353, 0.64353" stroke-width=".64353"/>
+ <g>
+  <text x="128.6156" y="107.48421" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="128.6156" y="107.48421" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">penguins_sub &lt;-</tspan><tspan x="128.6156" y="115.42171" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">  reactive(...) |&gt;</tspan><tspan x="128.6156" y="123.35921" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">  bindEvent(input$btn_submit)</tspan><tspan x="128.6156" y="131.29672" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/><tspan x="128.6156" y="139.23422" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <path d="m10.076 136.04h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"/>
+  <text x="9.268857" y="133.28081" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.268857" y="133.28081" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">actionButton("btn_submit")</tspan><tspan x="9.268857" y="141.21831" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+ </g>
+ <path d="m48.863 71.167c26.243 1.4474 27.481-0.15326 42.111 6.4836 5.833 2.6461 26.574 6.9668 41.712 7.5505" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-dasharray="0.64353, 0.64353" stroke-width=".64353"/>
+ <path d="m49.91 148.6c26.243-1.4474 48.063-3.374 58.523-15.568 6.0798-7.0882 9.3626-28.247 23.76-35.494" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-dasharray="0.64353, 0.64353" stroke-width=".64353"/>
+</svg>

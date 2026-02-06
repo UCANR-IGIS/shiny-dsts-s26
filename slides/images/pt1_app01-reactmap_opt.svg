@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="1200" height="675" version="1.1" viewBox="0 0 317.5 178.59" xmlns="http://www.w3.org/2000/svg">
+ <style>::selection {
+  background-color: #ffe28c;
+  color: white;
+}::-moz-selection {
+  background-color: #ffe28c;
+  color: white;
+}</style>
+ <defs>
+  <marker id="ConcaveTriangle" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+   <path transform="scale(.7)" d="m-2-4 11 4-11 4c2-2.33 2-5.66 0-8z" fill="context-stroke" fill-rule="evenodd"/>
+  </marker>
+ </defs>
+ <g>
+  <g stroke-width=".79">
+   <path d="m47.679 74.78h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821"/>
+   <path d="m237.13 39.625h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"/>
+   <path d="m237.13 109.96h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"/>
+  </g>
+  <path d="m87.361 86.373c36.441 0.4113 83.001-34.467 118.21-34.303" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-width=".965"/>
+  <path d="m87.361 87.346c36.441-0.41131 83.001 34.467 118.21 34.303" fill="none" marker-end="url(#ConcaveTriangle)" stroke="#00f" stroke-width=".965"/>
+  <g fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19">
+   <text x="26.389544" y="67.621284" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="26.389544" y="67.621284" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput("in_species")</tspan><tspan x="26.389544" y="75.558784" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+   <text x="179.1382" y="32.432049" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="179.1382" y="32.432049" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">plotOutput("out_peng_flip_body")</tspan><tspan x="179.1382" y="40.369549" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+   <text x="179.43895" y="144.59406" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="179.43895" y="144.59406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">tableOutput("out_peng_sumstats")</tspan><tspan x="179.43895" y="152.53156" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  </g>
+ </g>
+</svg>
