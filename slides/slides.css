@@ -28,7 +28,8 @@ section#building-dsts-with-shiny {
   text-align:center;
 }
 
-section#ucanr > h2 {
+/* Slides without titles - hide the h2 */
+section#ucanr > h2, section#love-data-week > h2 {
   display: none !important;
 }
 
@@ -74,4 +75,6 @@ div.fakecode {
   font-family: monospace;
   white-space: pre !important;
 }
-
+section#html-css-allies pre {
+  font-size: 75% !important;
+}

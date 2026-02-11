@@ -19,6 +19,7 @@ ui <- fluidPage(
                   choices = unique(penguins$island)),
       
       sliderInput("in_pct", "Percent Sample", min = 10, max = 100, value = 100, step = 10)
+      
     ),
 
     mainPanel(
