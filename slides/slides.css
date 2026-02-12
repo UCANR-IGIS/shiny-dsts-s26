@@ -1,9 +1,17 @@
+div.centerme {
+  text-align:center;
+}
 p.title-slide-pre {
   font-size: 4rem;
 }
 p.title-slide-title {
   font-size: 6rem;
   font-weight: bold;
+}
+
+div.indented1 {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 div.indented2 {
@@ -29,7 +37,7 @@ section#building-dsts-with-shiny {
 }
 
 /* Slides without titles - hide the h2 */
-section#ucanr > h2, section#love-data-week > h2 {
+section#ucanr > h2, section#love-data-week > h2, section#code-of-conduct > h2 {
   display: none !important;
 }
 

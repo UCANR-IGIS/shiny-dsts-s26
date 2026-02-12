@@ -211,7 +211,7 @@
 Building Decision Support<br>Tools with Shiny
 </p>
 <p class="title-slide-title">
-Part 1: Getting Started
+Part 1: Getting Started with Shiny
 </p>
 <p><br>
 </p>
@@ -220,12 +220,15 @@ Part 1: Getting Started
 </div>
 <p><br>
 </p>
-<div class="quarto-layout-panel" style="text-align:center; margin-top:2rem;" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="3" style="text-align:center; margin-top:2rem;">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img data-src="./images/igis-logo_400x120.png"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="./images/ldw-circuit-color_bg-white_2022_225x191.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img data-src="./images/gif-log_360x140.png" style="height:110px; width:285px"></p>
 </div>
 </div>
@@ -235,7 +238,7 @@ Part 1: Getting Started
 <h2></h2>
 
 <img data-src="./images/ldw-2026_title-slide_960x540.png" style="display:block; margin:0 auto;" class="r-stretch"></section>
-<section id="love-data-week" class="slide level2" data-menu-title="Code of Conduct">
+<section id="code-of-conduct" class="slide level2" data-menu-title="Code of Conduct">
 <h2></h2>
 
 <img data-src="./images/ldw-2026_code-conduct_960x540.png" style="display:block; margin:0 auto;" class="r-stretch"></section>
@@ -322,13 +325,17 @@ Import climate data from Cal-Adapt using the API
 <h2>Workshop Goals</h2>
 <p>Understand how Shiny works.</p>
 <p>Understand the principles of reactivity.</p>
-<p>Be able to create a simple shiny app scratch.</p>
-<p>Be able to better utilize documentation and GenAI tools.</p>
+<p>Be able to create a simple Shiny app from scratch.</p>
+<p>Be able to effectively utilize documentation and GenAI tools.</p>
 <p>Take a decision support model and turn it into a Shiny app.</p>
 </section>
-<section id="demo" class="slide level2 double-spaced-centered">
-<h2>Demo</h2>
-<p>Let’s make a new Shiny app!</p>
+<section id="hands-on" class="slide level2 double-spaced-centered">
+<h2>Hands-on</h2>
+<p><br>
+</p>
+<p><br>
+</p>
+<p>Let’s make a Shiny app!</p>
 <aside class="notes">
 <p>Show them how to create a new Shiny in RStudio</p>
 <style type="text/css">
@@ -346,67 +353,131 @@ Import climate data from Cal-Adapt using the API
 <section id="old-faithful-what-we-learned" class="slide level2 double-spaced-left">
 <h2>Old Faithful: What We Learned</h2>
 <p>A Shiny app is just R code.</p>
-<p>It’s usually a single file called app.R, saved a folder.</p>
-<p>But it’s not a typical R script…</p>
+<p>It’s usually a single file called app.R</p>
+<p>It’s usually saved a folder with other stuff needed (e.g., data).</p>
 </section>
-<section id="scripts-vs.-web-apps" class="slide level2">
-<h2>Scripts vs.&nbsp;Web Apps</h2>
+<section id="not-typical-r-script" class="slide level2 center" data-menu-title="Not a Typical R Script">
+<h2></h2>
+<div class="centerme" data-menu-title="app.R not typical">
+<p>But app.R is not a typical R script…</p>
+</div>
+</section>
+<section id="traditional-r-script" class="slide level2">
+<h2>Traditional R Script</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="do">## Load libraries</span></span>
+<span id="cb1-2"><a href=""></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-3"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href=""></a><span class="fu">library</span>(units)</span>
+<span id="cb1-5"><a href=""></a><span class="fu">library</span>(arcgisbinding)</span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="do">## Initialize R-ArcGIS Binding</span></span>
+<span id="cb1-8"><a href=""></a><span class="fu">arc.check_product</span>()</span>
+<span id="cb1-9"><a href=""></a></span>
+<span id="cb1-10"><a href=""></a><span class="do">## Create a tibble with the correct names and abbreviations</span></span>
+<span id="cb1-11"><a href=""></a>rec_abbrev_tbl <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Desert"</span>, <span class="st">"DREC"</span>,</span>
+<span id="cb1-12"><a href=""></a>                    <span class="st">"Hansen"</span>, <span class="st">"HAREC"</span>,</span>
+<span id="cb1-13"><a href=""></a>                    <span class="st">"Hopland"</span>, <span class="st">"HREC"</span>,</span>
+<span id="cb1-14"><a href=""></a>                    <span class="st">"Intermountain"</span>, <span class="st">"IREC"</span>,</span>
+<span id="cb1-15"><a href=""></a>                    <span class="st">"Kearney"</span>, <span class="st">"KARE"</span>,</span>
+<span id="cb1-16"><a href=""></a>                    <span class="st">"Lindcove"</span>, <span class="st">"LREC"</span>,</span>
+<span id="cb1-17"><a href=""></a>                    <span class="st">"Sierra Foothill"</span>, <span class="st">"SFREC"</span>,</span>
+<span id="cb1-18"><a href=""></a>                    <span class="st">"South Coast"</span>, <span class="st">"SCREC"</span>,</span>
+<span id="cb1-19"><a href=""></a>                    <span class="st">"Westside"</span>, <span class="st">"WSREC"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-20"><a href=""></a>  <span class="fu">matrix</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-21"><a href=""></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-22"><a href=""></a>  <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"abbrev"</span>))</span>
+<span id="cb1-23"><a href=""></a></span>
+<span id="cb1-24"><a href=""></a><span class="do">## Get the feature layer for the REC boundaries</span></span>
+<span id="cb1-25"><a href=""></a>recs_bnd_url <span class="ot">&lt;-</span> <span class="st">"https://geodata.ucanr.edu/arcgis/rest/services/REC_Data/FeatureServer/0"</span></span>
+<span id="cb1-26"><a href=""></a></span>
+<span id="cb1-27"><a href=""></a><span class="do">## Import and fix errors in the attribute table </span></span>
+<span id="cb1-28"><a href=""></a>recs_bnd_sf <span class="ot">&lt;-</span> recs_bnd_url <span class="sc">|&gt;</span> </span>
+<span id="cb1-29"><a href=""></a>  <span class="fu">arc.open</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a href=""></a>  <span class="fu">arc.select</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-31"><a href=""></a>  <span class="fu">arc.data2sf</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-32"><a href=""></a>  <span class="fu">st_zm</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-33"><a href=""></a>  <span class="fu">st_transform</span>(<span class="dv">3857</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-34"><a href=""></a>  <span class="fu">select</span>(name, brochure_l) <span class="sc">|&gt;</span></span>
+<span id="cb1-35"><a href=""></a>  <span class="fu">group_by</span>(name) <span class="sc">|&gt;</span></span>
+<span id="cb1-36"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">name =</span> <span class="fu">first</span>(name),</span>
+<span id="cb1-37"><a href=""></a>            <span class="at">brochure =</span> <span class="fu">first</span>(brochure_l)) <span class="sc">|&gt;</span></span>
+<span id="cb1-38"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">objectid =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb1-39"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">acres =</span> <span class="fu">st_area</span>(geom) <span class="sc">|&gt;</span></span>
+<span id="cb1-40"><a href=""></a>           <span class="fu">set_units</span>(acres) <span class="sc">|&gt;</span></span>
+<span id="cb1-41"><a href=""></a>           <span class="fu">round</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-42"><a href=""></a>           <span class="fu">as.numeric</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb1-43"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">if_else</span>(name <span class="sc">==</span> <span class="st">"HREC"</span>,</span>
+<span id="cb1-44"><a href=""></a>                        <span class="st">"Hopland"</span>, name)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-45"><a href=""></a>  <span class="fu">left_join</span>(rec_abbrev_tbl, <span class="at">by =</span> <span class="st">"name"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-46"><a href=""></a>  <span class="fu">relocate</span>(objectid, name, abbrev, acres, brochure, geom)</span>
+<span id="cb1-47"><a href=""></a></span>
+<span id="cb1-48"><a href=""></a><span class="do">## Export polygons</span></span>
+<span id="cb1-49"><a href=""></a>recs_bnd_sf <span class="sc">|&gt;</span> </span>
+<span id="cb1-50"><a href=""></a>  <span class="fu">st_write</span>(<span class="at">dsn =</span> <span class="fu">file.path</span>(data_dir, <span class="st">"recs_bnd_3857_v3.geojson"</span>), </span>
+<span id="cb1-51"><a href=""></a>           <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)                               </span>
+<span id="cb1-52"><a href=""></a></span>
+<span id="cb1-53"><a href=""></a><span class="do">## Export centroids</span></span>
+<span id="cb1-54"><a href=""></a>recs_bnd_sf <span class="sc">|&gt;</span> </span>
+<span id="cb1-55"><a href=""></a>  <span class="fu">st_centroid</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-56"><a href=""></a>  <span class="fu">st_write</span>(<span class="at">dsn =</span> <span class="fu">file.path</span>(data_dir, <span class="st">"recs_ctr_3857_v3.geojson"</span>),</span>
+<span id="cb1-57"><a href=""></a>           <span class="at">delete_dsn =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="programming-for-web-apps" class="slide level2">
+<h2>Programming for Web Apps</h2>
 <div class="r-stack">
 <p><img data-src="./images/old_faithful_bld_1400x560_01.png" style="border:1px solid gray;" width="1772"></p>
 <p><img data-src="./images/old_faithful_bld_1400x560_02.png" class="fragment" width="1772"></p>
 <p><img data-src="./images/old_faithful_bld_1400x560_03.png" class="fragment" width="1772"></p>
+<div class="fragment" style="width:400px; background-color:none; text-align:center; font-size:32px; position:relative; top:-220px; left:-70px; border:none; font-family:monospace; color:darkviolet; font-weight:bold;">
+<p>Shiny Server <img src="./images/visualization_240x228.gif" style="width:130px; vertical-align:middle; margin-left:0.2em;"></p>
+</div>
 </div>
 </section>
 <section id="anatomy-of-app.r" class="slide level2">
 <h2>Anatomy of app.R</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1-2|4-14|16-24|26-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Preamble - load library, import data, etc.</span></span>
-<span id="cb1-2"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="co"># Define UI elements, layout</span></span>
-<span id="cb1-5"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb1-6"><a href=""></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
-<span id="cb1-7"><a href=""></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb1-8"><a href=""></a>        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb1-9"><a href=""></a>            <span class="fu">sliderInput</span>(<span class="st">"bins"</span>, <span class="st">"Number of bins:"</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">50</span>, <span class="at">value =</span> <span class="dv">30</span>)),</span>
-<span id="cb1-10"><a href=""></a>        <span class="fu">mainPanel</span>(</span>
-<span id="cb1-11"><a href=""></a>           <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
-<span id="cb1-12"><a href=""></a>        )</span>
-<span id="cb1-13"><a href=""></a>    )</span>
-<span id="cb1-14"><a href=""></a>)</span>
-<span id="cb1-15"><a href=""></a></span>
-<span id="cb1-16"><a href=""></a><span class="co"># Define server logic </span></span>
-<span id="cb1-17"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb1-18"><a href=""></a>    output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb1-19"><a href=""></a>        x <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>]</span>
-<span id="cb1-20"><a href=""></a>        bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb1-21"><a href=""></a>        <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>,</span>
-<span id="cb1-22"><a href=""></a>             <span class="at">xlab =</span> <span class="st">'Waiting time to next eruption (in mins)'</span>)</span>
-<span id="cb1-23"><a href=""></a>    })</span>
-<span id="cb1-24"><a href=""></a>}</span>
-<span id="cb1-25"><a href=""></a></span>
-<span id="cb1-26"><a href=""></a><span class="co"># Run the app</span></span>
-<span id="cb1-27"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1-2|4-14|16-24|26-27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Preamble - load library, import data, etc.</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="co"># Define UI elements, layout</span></span>
+<span id="cb2-5"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb2-6"><a href=""></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
+<span id="cb2-7"><a href=""></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb2-8"><a href=""></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb2-9"><a href=""></a>            <span class="fu">sliderInput</span>(<span class="st">"bins"</span>, <span class="st">"Number of bins:"</span>, <span class="at">min =</span> <span class="dv">1</span>, <span class="at">max =</span> <span class="dv">50</span>, <span class="at">value =</span> <span class="dv">30</span>)),</span>
+<span id="cb2-10"><a href=""></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb2-11"><a href=""></a>           <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
+<span id="cb2-12"><a href=""></a>        )</span>
+<span id="cb2-13"><a href=""></a>    )</span>
+<span id="cb2-14"><a href=""></a>)</span>
+<span id="cb2-15"><a href=""></a></span>
+<span id="cb2-16"><a href=""></a><span class="co"># Define server logic </span></span>
+<span id="cb2-17"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb2-18"><a href=""></a>    output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-19"><a href=""></a>        x <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>]</span>
+<span id="cb2-20"><a href=""></a>        bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb2-21"><a href=""></a>        <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>,</span>
+<span id="cb2-22"><a href=""></a>             <span class="at">xlab =</span> <span class="st">'Waiting time to next eruption (in mins)'</span>)</span>
+<span id="cb2-23"><a href=""></a>    })</span>
+<span id="cb2-24"><a href=""></a>}</span>
+<span id="cb2-25"><a href=""></a></span>
+<span id="cb2-26"><a href=""></a><span class="co"># Run the app</span></span>
+<span id="cb2-27"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="html-css-allies" class="slide level2">
-<h2>HTML &amp; CSS</h2>
-<p>When programming in Shiny, you have a powerful ally:</p>
-<div style="text-align:center;">
-<p><span style="font-weight:bold; font-size:120%; color:blue;">HTML &amp; CSS</span></p>
-</div>
+<section id="html-css" class="slide level2" data-menu-title="HTML &amp; CSS">
+<h2>Your New Best Friend: HTML &amp; CSS</h2>
+<p>When programming in Shiny, you have a powerful ally: <span style="font-weight:bold; font-size:120%; color:blue;">HTML &amp; CSS</span></p>
 <p><br>
 </p>
 <p><code>shiny</code> &amp; <code>htmltools</code> have <em>dozens</em> of functions that produce HTML code.</p>
 <p><br>
 </p>
 <p>Example:</p>
-<pre><code>p("For more info, please see our ", 
-   tags$a("web page", href = "https://igis.ucanr.edu/"), ".")</code></pre>
-<p>generates:</p>
-<pre><code>&lt;p&gt;For more info, please see our &lt;a href="https://igis.ucanr.edu/"&gt;web page&lt;/a&gt;.&lt;/p&gt;"</code></pre>
-<p>which renders as:</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"For more info, please see our "</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="st">"web page"</span>, <span class="at">href =</span> <span class="st">"https://igis.ucanr.edu/"</span>), <span class="st">"."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <p>
 For more info, please see our 
@@ -415,12 +486,25 @@ For more info, please see our
 </p>
 </div>
 </div>
+<p><br>
+</p>
+<div title="HTML Functions">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>HTML Functions</strong></p>
+</div>
+<div class="callout-content">
+<p>To see more HTML functions, run <code>names(shiny::tags)</code></p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="running-a-shiny-app" class="slide level2">
-<h2>Running a Shiny App</h2>
-<p>Running a Shiny app requires a R session.</p>
-<p>When you run a Shiny app locally, it takes over your R session.</p>
-</section>
+
 <section id="app1-preview" class="slide level2">
 <h2><code>app01.R</code></h2>
 <div class="columns">
@@ -440,7 +524,7 @@ For more info, please see our
 <section id="workshop-materials" class="slide level2 double-spaced-centered">
 <h2>Workshop Materials</h2>
 <p><strong>Posit Cloud:</strong></p>
-<p><a href="https://bit.ly/shiny-dsts-s26" class="uri">https://bit.ly/shiny-dsts-s26</a></p>
+<p><a href="https://posit.cloud/content/11896218" class="uri">https://posit.cloud/content/11896218</a></p>
 <p><br>
 </p>
 <p><strong>RStudio Desktop:</strong></p>
@@ -551,8 +635,49 @@ div()</p>
 </div>
 </div>
 </section>
+<section id="genai" class="slide level2 center" data-menu-title="GenAI">
+<h2></h2>
+<div class="centerme" style="font-size:80px; font-style:italic; font-family: Georgia, serif;">
+<p>Do I really need to learn all this?</p>
+<p><br>
+</p>
+<p>Can’t GenAI do this for me?</p>
+</div>
+</section>
+<section id="genai-helpers" class="slide level2">
+<h2>GenAI Helpers</h2>
+<p><strong>Gemini, Claude, ChatGPT, etc.</strong></p>
+<div class="indented1">
+<ul>
+<li>ask questions, generate entire app.R scripts</li>
+</ul>
+</div>
+<p><a href="https://shiny.posit.co/blog/posts/shiny-assistant/"><strong>Shiny Assistant</strong></a></p>
+<div class="indented1">
+<ul>
+<li>Creates (and runs!) a complete Shiny app based on your prompt</li>
+<li>You can also paste in your own app.R</li>
+<li>Continue to make requests, ask questions, etc. It will keep updating and running the app.</li>
+</ul>
+</div>
+<p><strong>Integrated Code Completion Tools in IDEs</strong></p>
+<div class="indented1">
+<ul>
+<li>‘ghost text’, sidebar interfaces, code suggestions, etc.</li>
+<li>available in RStudio, Positron, VSCode</li>
+</ul>
+</div>
+</section>
+<section id="genai-best-practices" class="slide level2 double-spaced-centered">
+<h2>GenAI Best Practices</h2>
+<p>Only use GenAI tools approved by your organization.</p>
+<p>Smaller questions are generally better.</p>
+<p>Understand the fundamentals so you can evaluate output.</p>
+<p>Ask the same question to multiple LLMs.</p>
+<p>Treat it like taking a class - get curious, ask follow-up questions, read documentation, etc.</p>
+</section>
 <section id="app2-preview" class="slide level2">
-<h2><code>app02.R</code></h2>
+<h2><code>app02.R</code> Preview</h2>
 <div class="columns">
 <div class="column" style="width:58%;">
 <p><strong>Penguin Data Explorer <u>with Randomizer</u></strong></p>
@@ -561,9 +686,6 @@ div()</p>
 <li><p>New slide: percent sample</p></li>
 <li><p>Outputs: plot and table (same as app1.R)</p></li>
 </ul>
-<p><br>
-</p>
-<p>To build this we’re going to need to need a <strong><code>reactive()</code></strong> object.</p>
 </div><div class="column" style="width:38%;">
 <p><img data-src="./images/pt1_app02-screenshot_560x830.png" class="appscreenshot"></p>
 </div></div>
@@ -573,57 +695,164 @@ div()</p>
 <object type="image/svg+xml" data="images/pt1_app02-reactmap_opt.svg" class="centered">
 </object>
 </section>
-<section id="app02.r-reactives" class="slide level2 double-spaced-left">
-<h2><code>app02.R</code> Reactives</h2>
+<section id="new-shiny-method-reactive" class="slide level2">
+<h2>New Shiny method: <code>reactive()</code></h2>
+<p>‘reactive’ objects are:</p>
+<ul>
+<li>created with <code>reactive()</code> in the server section<br>
+</li>
+<li>like any R object, but reactive to other objects<br>
+</li>
+<li>defined by a piece of code (that gets re-run when needed)<br>
+</li>
+<li>often used to eliminate duplication</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb4-2"><a href=""></a>  </span>
+<span id="cb4-3"><a href=""></a>  data_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb4-4"><a href=""></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href=""></a>      <span class="fu">filter</span>(species <span class="sc">==</span> input<span class="sc">$</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb4-6"><a href=""></a>      <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb4-7"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb4-8"><a href=""></a>  })</span>
+<span id="cb4-9"><a href=""></a></span>
+<span id="cb4-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="using-reactive-objects" class="slide level2">
+<h2>Using Reactive Objects</h2>
+<p>Even though reactive objects are used like standard R objects, because they are dynamic they are called like functions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb5-2"><a href=""></a>  </span>
+<span id="cb5-3"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb5-4"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
+<span id="cb5-5"><a href=""></a>  })</span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>&nbsp;</p>
+<ul>
+<li><p>Reactives are almost always used somewhere else in your app</p></li>
+<li><p>Reactives can be chained together to create a data processing pipeline</p></li>
+<li><p>Reactives can be ‘bound’ to specific events so they only update when something specific changes</p></li>
+</ul>
+</section>
+<section id="app02.r-reactives---summary" class="slide level2 double-spaced-left">
+<h2><code>app02.R</code> Reactives - Summary</h2>
 <p>Use a reactive whenever you need an intermediate object.</p>
 <p>Reactives can store <em>any</em> R object (e.g., data frame, list, etc.).</p>
 <p>Reactives are often used to store data in decision support tools that wrangle data.</p>
-<p>You can use reactive in render functions or other reactives - just remember to include the <code>()</code>.</p>
+<p>You can use reactive in <code>render****()</code> functions, or other reactives (just remember to include the <code>()</code>!).</p>
 </section>
-<section id="app3-preview" class="slide level2">
-<h2><code>app03.R</code></h2>
-<div class="columns">
-<div class="column" style="width:58%;">
-<p><strong>Penguin Data Explorer with <u>Submit button</u></strong></p>
-<p>Reactivity in Shiny is automatic by default. That’s usually a good thing, but sometimes you want to control the reactivity.</p>
-<p>In this exercise we will:</p>
+<section id="more-advanced-techniques-for-next-time" class="slide level2">
+<h2>More Advanced Techniques (for next time!)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" style="">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Function(s)</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">bindEvent(), isolate()</td>
+<td style="text-align: left;">Control reactivity (when you don't always want reactivity to be immediate)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-family: monospace;">observe()</td>
+<td style="text-align: left;">Reactive code that doesn't return anything</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">reactiveVal()</td>
+<td style="text-align: left;">Like a reactive but can be updated from multiple places</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-family: monospace;">update****()</td>
+<td style="text-align: left;">Update input elements</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<p>Taking your UI to the next level:</p>
 <ul>
-<li><p>Add an action button</p></li>
-<li><p>Bind the reactive to the action button, so its only updates when the button is pressed.</p></li>
+<li>HTML widgets!</li>
+<li>theming and styling</li>
+<li>much more</li>
 </ul>
-<p>This is also known as <strong>delayed reactivity</strong>.</p>
-</div><div class="column" style="width:38%;">
-<p><img data-src="./images/pt1_app03-screenshot_560x850.png" class="appscreenshot"></p>
-</div></div>
-</section>
-<section id="app03.r-reactivity" class="slide level2">
-<h2><code>app03.R</code> Reactivity</h2>
-<object type="image/svg+xml" data="images/pt1_app03-reactmap_opt.svg" class="centered">
-</object>
-</section>
-<section id="app03.r-delayed-reactivity" class="slide level2 double-spaced-left">
-<h2><code>app03.R</code> Delayed Reactivity</h2>
-<p>Use <code>bindEvent()</code> to control when a reactive will update.</p>
-<p>To update for more than one condition, you can use:</p>
-<p><code>bindEvent(&lt;&lt;reactive&gt;&gt;, c(input$btn1, input$btn2))</code></p>
-<p>Also works for observers.</p>
 </section>
 <section id="publishing-shiny-apps" class="slide level2">
 <h2>Publishing Shiny Apps</h2>
 <p>For other people to use your Shiny app, it must be published to a server that is running Shiny Server.</p>
-<p>Options include:</p>
+<p>To get started, look for the ‘Publish’ button in RStudio (ShinyApps.io)</p>
+<p><img data-src="./images/publish-btn-rstudio_185x91.png" class="" style="display:block; margin:0 auto; width:320px;"></p>
+<p>Positron:</p>
+<div class="indented2">
 <ul>
-<li>ShinyApps.io (going away in 2026)</li>
-<li>Posit Connect Cloud</li>
-<li>various commercial services</li>
+<li>install ‘Posit Publisher Extension’<br>
+</li>
+<li>create a manifest file<br>
+</li>
 </ul>
-<p>Look for the ‘Publish’ button in RStudio, and Publish command in Positron.</p>
+</div>
 </section>
-<section id="other-publishing-options" class="slide level2">
-<h2>Other Publishing Options</h2>
-<p>:: {.callout-tip .indented4 .indented4r title=“Publishing Shiny Apps on a Standard Web Server”} The <a href="https://posit-dev.github.io/r-shinylive/"><code>shinylive</code></a> package can convert your Shiny app to a version of R that runs in the browser so doesn’t require Shiny Server. This allows you to host it on a standard web server.<br>
-:::</p>
-<pre><code>shiny::runGitHub()</code></pre>
+<section id="hosting-options" class="slide level2">
+<h2>Hosting Options</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" style="">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ShinyApps.io</td>
+<td style="text-align: left;">free tier; going away in 2026</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Posit Connect Cloud</td>
+<td style="text-align: left;">free tier; designed to be deployed from GitHub</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Commercial services (PaaS)</td>
+<td style="text-align: left;">Posit, Ploomber</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pre-Configured Servers</td>
+<td style="text-align: left;">DigitalOcean, AWS, Kamatera</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Docker hosting</td>
+<td style="text-align: left;">self-hosted, Fly.io, DigitalOcean, AWS, Azure, etc.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shiny Server open source</td>
+<td style="text-align: left;">self-hosted</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><br>
+</p>
+<div class="indented4 indented4r" title="Publish a Shiny Apps on a Standard Web Server!!">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Publish a Shiny Apps on a Standard Web Server!!</strong></p>
+</div>
+<div class="callout-content">
+<p>The <a href="https://posit-dev.github.io/r-shinylive/"><code>shinylive</code></a> package can convert your Shiny app to a version of R that runs in the browser so doesn’t require Shiny Server. This allows you to host it on a standard web server!</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="end" class="slide level2">
 <h2>End!</h2>

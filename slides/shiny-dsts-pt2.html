@@ -28,7 +28,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="shiny-dsts-pt2_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="shiny-dsts-pt2_files/libs/revealjs/dist/theme/quarto-a16f6d45591fc16ceade5dff7a9c531e.css">
   <link rel="stylesheet" href="slides.css">
   <link href="shiny-dsts-pt2_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="shiny-dsts-pt2_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -128,7 +128,7 @@
 
 <section id="title-slide" data-visibility="hidden" class="quarto-title-block center">
   <h1 class="title">Building Decision Support Tools with Shiny</h1>
-  <p class="subtitle">Part 2: Creeating a Place Based DST</p>
+  <p class="subtitle">Part 2: Case Study</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -141,7 +141,7 @@
 Building Decision Support<br>Tools with Shiny
 </p>
 <p class="title-slide-title">
-Part 2: Creating a Place Based DST
+Part 2: Case Study
 </p>
 <p><br>
 </p>
@@ -150,12 +150,15 @@ Part 2: Creating a Place Based DST
 </div>
 <p><br>
 </p>
-<div class="quarto-layout-panel" style="text-align:center; margin-top:2rem;" data-layout-ncol="2">
+<div class="quarto-layout-panel" data-layout-ncol="3" style="text-align:center; margin-top:2rem;">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img data-src="./images/igis-logo_400x120.png"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="./images/ldw-circuit-color_bg-white_2022_225x191.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img data-src="./images/gif-log_360x140.png" style="height:110px; width:285px"></p>
 </div>
 </div>
@@ -163,20 +166,21 @@ Part 2: Creating a Place Based DST
 </section>
 <section id="would-you-call-this-a-decision-support-tool" class="slide level2">
 <h2>Would You Call This a Decision Support Tool?</h2>
-<p><img data-src="./images/old_faithful_1125x508_01.png">{style = “display:block; margin:0 auto;”}</p>
-</section>
-<section id="what-differentiates-decision-support-tools-from-other-web-apps" class="slide level2 double-spaced-left">
-<h2>What Differentiates ‘Decision Support Tools’ from Other Web Apps?</h2>
+
+<img data-src="./images/old_faithful_bld_1400x560_01.png" style="display:block; margin:0 auto;" class="r-stretch"></section>
+<section id="decision-support-tools" class="slide level2">
+<h2>Decision Support Tools</h2>
+<p>What Differentiates ‘Decision Support Tools’ from Other Web Apps?</p>
 <ul>
 <li>focused on a decision space<br>
 </li>
-<li>focused on an audience<br>
+<li>focused on a specific audience<br>
 </li>
-<li>convert raw data into actionable info<br>
+<li>converts raw data into actionable info<br>
 </li>
-<li>typicaly involves</li>
+<li>typically involves a decision model</li>
 </ul>
-<p>graphic of database, decision model, user input / parameters, visualization</p>
+<!-----------graphic of database, decision model, user input / parameters, visualization -------->
 </section>
 <section id="qualities-of-a-good-dst" class="slide level2 double-spaced-left">
 <h2>Qualities of a good DST</h2>
@@ -185,7 +189,7 @@ Part 2: Creating a Place Based DST
 </li>
 <li>user-friendly<br>
 </li>
-<li>should be ‘obvious’ how to use <em>to the user</em><br>
+<li>should be ‘obvious’ <strong><em>to the user</em></strong><br>
 </li>
 <li>works well on the user’s preferred devices<br>
 </li>
@@ -196,16 +200,66 @@ Part 2: Creating a Place Based DST
 <li>conveys the limits of certainty</li>
 </ul>
 </section>
-<section id="shiny-methods-observe" class="slide level2">
-<h2>Shiny Methods: <code>observe()</code></h2>
-<p>Use an observe to run code that doesn’t return something used by another object.</p>
-<pre><code>observe({
- ## This code is reactive 
- ## It will run once when the app loads
- ## Then it will run whenever objects in it are updated
- ## 
-})</code></pre>
-<p>observeEvent - same but reactivity is controlled</p>
+<section id="nitrogen-optimizer" class="slide level2">
+<h2>Nitrogen Optimizer</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p>Crops need nitrogen, but it is expensive.</p>
+<p><br>
+</p>
+<p>If you apply too much, it will be leached (wasted).</p>
+<p><br>
+</p>
+<p>Leaching is also bad for the environment.</p>
+<p><br>
+</p>
+<p>Best practice: only apply what will be lost in the harvest</p>
+</div><div class="column" style="width:38%;">
+<p><img data-src="./images/nitrogen-cycle_500x500.jpg"></p>
+</div></div>
+</section>
+<section id="nitrogen-balance-equation" class="slide level2">
+<h2>Nitrogen Balance Equation</h2>
+<p><span class="math display">\[N_{surplus} = N_{applied} - N_{removed}\]</span></p>
+<p><span class="math display">\[N_{surplus} = N_{applied} - (Yield_{target} \times U_{efficiency})\]</span> Where</p>
+<ul>
+<li><span class="math inline">\(N_{surplus}\)</span>: Potential nitrogen remaining in soil (lbs/acre).</li>
+<li><span class="math inline">\(N_{applied}\)</span>: User-defined fertilizer application rate (lbs/acre).</li>
+<li><span class="math inline">\(Yield_{target}\)</span>: The expected harvest yield (e.g., tons/acre).</li>
+<li><span class="math inline">\(U_{efficiency}\)</span>: The nitrogen uptake coefficient (lbs of N per unit of yield).</li>
+</ul>
+</section>
+<section id="n2-uptake-efficiency-varies-by-crop" class="slide level2">
+<h2>N2 Uptake Efficiency Varies by Crop</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">crop</th>
+<th style="text-align: right;">uptake_coeff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Almonds (lbs meat)</td>
+<td style="text-align: right;">0.068</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Processing Tomatoes (tons)</td>
+<td style="text-align: right;">2.500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lettuce (tons)</td>
+<td style="text-align: right;">3.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="inputs" class="slide level2">
+<h2>Inputs</h2>
 </section>
 <section id="shiny-methods-custom-css" class="slide level2">
 <h2>Shiny Methods: custom css</h2>
