@@ -220,7 +220,7 @@ Part 1: Getting Started with Shiny
 </div>
 <p><br>
 </p>
-<div class="quarto-layout-panel" data-layout-ncol="3" style="text-align:center; margin-top:2rem;">
+<div class="quarto-layout-panel" style="text-align:center; margin-top:2rem;" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <p><img data-src="./images/igis-logo_400x120.png"></p>
@@ -309,6 +309,18 @@ Import climate data from Cal-Adapt using the API
 <https://ucanr-igis.shinyapps.io/uav_stocking_survey/>{target="_blank"}
 ----->
 </section>
+<section id="registrants-by-inst" class="slide level2">
+<h2>About You - Institution</h2>
+
+<img data-src="shiny-dsts-pt1_files/figure-revealjs/pie_chart_inst-1.png" width="960" class="r-stretch"></section>
+<section id="registrants-by-position" class="slide level2">
+<h2>About You - Position</h2>
+
+<img data-src="shiny-dsts-pt1_files/figure-revealjs/pie_chart_pos-1.png" width="960" class="r-stretch"></section>
+<section id="registrants-by-rexperience" class="slide level2">
+<h2>About You - R Experience</h2>
+
+<img data-src="shiny-dsts-pt1_files/figure-revealjs/pie_chart_rexp-1.png" width="960" class="r-stretch"></section>
 <section id="what-is-shiny" class="slide level2 double-spaced-centered">
 <h2>What is Shiny?</h2>
 <p><br>
@@ -536,29 +548,25 @@ For more info, please see our
 <object type="image/svg+xml" data="images/pt1_app01-reactmap_opt.svg" class="centered">
 </object>
 </section>
-<section id="useful-html-functions" class="slide level2">
-<h2>Useful HTML Functions</h2>
+<section id="handy-functions-for-static-html" class="slide level2">
+<h2>Handy Functions for Static HTML</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:45%;">
 <p>UI Elements</p>
 <div class="functions">
 <p>p()<br>
-strong()<br>
 h1()<br>
 h2()<br>
-h3()</p>
+h3()<br>
+strong()<br>
+em() img()</p>
 </div>
-</div><div class="column" style="width:26%;">
+</div><div class="column" style="width:45%;">
 <p>Layout:</p>
 <div class="functions">
 <p>br()<br>
 hr()<br>
 div()</p>
-</div>
-</div><div class="column" style="width:26%;">
-<p>Text:</p>
-<div class="functions">
-<p>glue()</p>
 </div>
 </div></div>
 <p><br>
@@ -579,9 +587,11 @@ div()</p>
 </div>
 </div>
 </section>
-<section id="output-render-function-pairs" class="slide level2">
-<h2>Output-Render Function Pairs</h2>
-<table class="table table-striped table-hover table-condensed caption-top" style="margin-left: auto; margin-right: auto;">
+<section id="output-render-partners" class="slide level2">
+<h2><code>***Output()</code> ↔︎ <code>render***()</code> partners</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" style="">
 <thead>
 <tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">UI Function (Placement)</th>
@@ -610,29 +620,34 @@ div()</p>
 <td style="text-align: left; font-family: monospace;">renderImage()</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">uiOutput()</td>
-<td style="text-align: left; font-family: monospace;">renderUI()</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; font-family: monospace;">htmlOutput()</td>
+<td style="text-align: left; font-family: monospace;">uiOutput(), htmlOutput()</td>
 <td style="text-align: left; font-family: monospace;">renderUI()</td>
 </tr>
 </tbody>
 </table>
-<div class="indented4 indented4r" title="More Demo Apps">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>More Demo Apps</strong></p>
-</div>
-<div class="callout-content">
-<p><code>shiny::runExample()</code></p>
 </div>
 </div>
-</div>
+</section>
+<section id="render-functions" class="slide level2">
+<h2><code>render***()</code> Functions</h2>
+<p>Each render*** function expects a specific object</p>
+<p>The only thing that matters is the last line!</p>
+<p><br>
+</p>
+<p>Example: <code>renderText()</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>output<span class="sc">$</span>out_num_hurricanes <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb4-2"><a href=""></a>  </span>
+<span id="cb4-3"><a href=""></a>  <span class="do">## renderText expects a character object</span></span>
+<span id="cb4-4"><a href=""></a>  </span>
+<span id="cb4-5"><a href=""></a>  <span class="do">## You can have a 100 lines of code if needed</span></span>
+<span id="cb4-6"><a href=""></a>  category3_hurricanes <span class="ot">&lt;-</span> storms <span class="sc">|&gt;</span> </span>
+<span id="cb4-7"><a href=""></a>    <span class="fu">filter</span>(category <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-8"><a href=""></a>    <span class="fu">distinct</span>(name, year)</span>
+<span id="cb4-9"><a href=""></a>  </span>
+<span id="cb4-10"><a href=""></a>  <span class="do">## As long as the last one returns a character object!</span></span>
+<span id="cb4-11"><a href=""></a>  <span class="fu">nrow</span>(category3_hurricanes) <span class="sc">|&gt;</span> <span class="fu">as.character</span>()</span>
+<span id="cb4-12"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="genai" class="slide level2 center" data-menu-title="GenAI">
@@ -708,29 +723,29 @@ div()</p>
 <li>often used to eliminate duplication</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb4-2"><a href=""></a>  </span>
-<span id="cb4-3"><a href=""></a>  data_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb4-4"><a href=""></a>    penguins <span class="sc">|&gt;</span> </span>
-<span id="cb4-5"><a href=""></a>      <span class="fu">filter</span>(species <span class="sc">==</span> input<span class="sc">$</span>species) <span class="sc">|&gt;</span> </span>
-<span id="cb4-6"><a href=""></a>      <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
-<span id="cb4-8"><a href=""></a>  })</span>
-<span id="cb4-9"><a href=""></a></span>
-<span id="cb4-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb5-2"><a href=""></a>  </span>
+<span id="cb5-3"><a href=""></a>  data_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb5-4"><a href=""></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href=""></a>      <span class="fu">filter</span>(species <span class="sc">==</span> input<span class="sc">$</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href=""></a>      <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb5-7"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb5-8"><a href=""></a>  })</span>
+<span id="cb5-9"><a href=""></a></span>
+<span id="cb5-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="using-reactive-objects" class="slide level2">
 <h2>Using Reactive Objects</h2>
 <p>Even though reactive objects are used like standard R objects, because they are dynamic they are called like functions:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb5-2"><a href=""></a>  </span>
-<span id="cb5-3"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb5-4"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
-<span id="cb5-5"><a href=""></a>  })</span>
-<span id="cb5-6"><a href=""></a></span>
-<span id="cb5-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb6-2"><a href=""></a>  </span>
+<span id="cb6-3"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb6-4"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
+<span id="cb6-5"><a href=""></a>  })</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>&nbsp;</p>
 <ul>
@@ -813,7 +828,7 @@ div()</p>
 <td style="text-align: left;">free tier; going away in 2026</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Posit Connect Cloud</td>
+<td style="text-align: left;">Posit Connect Cloud*</td>
 <td style="text-align: left;">free tier; designed to be deployed from GitHub</td>
 </tr>
 <tr class="odd">
@@ -835,6 +850,9 @@ div()</p>
 </tbody>
 </table>
 </div>
+</div>
+<div style="font-size:80%; font-style:italic; text-align:center;">
+<p>*see also Posit webinar: <a href="https://posit.co/webinar/publishing-r-python-work-evaluating-connect-and-connect-cloud">Publishing R &amp; Python Work: Evaluating Connect and Connect Cloud</a>, Feb 19, 2026</p>
 </div>
 <p><br>
 </p>

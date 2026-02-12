@@ -1,3 +1,9 @@
+## CHALLENGE!!
+##
+## This Shiny app displays includes a placeholder for the number of observations for the selected species.
+## Replace the placeholder with the actual number of non-missing values for the selected species.
+## (don't worry about throwing out missing values)
+
 library(shiny)
 library(ggplot2)
 library(dplyr)
@@ -16,11 +22,15 @@ ui <- fluidPage(
     
     
     mainPanel(
-      p("You selected:"),
-      textOutput("out_species"),
-      hr(),
       
+      h3("Sample Size"),
+      p("Number of observations for the selected species:"),
+      p("xx"),
+      hr(),       ## add a horizontal rule
+      
+      h3("Flipper Length vs. Body Mass"),
       plotOutput("out_peng_flip_body", height = "300px"),
+      hr(),
       
       h3("Summary Stats"),
       tableOutput("out_peng_sumstats")
@@ -32,10 +42,6 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   
-  output$out_species <- renderText({
-    input$in_species
-  })
-  
   output$out_peng_flip_body <- renderPlot({
     
     penguins_filt <- penguins |> 
@@ -43,8 +49,8 @@ server <- function(input, output, session) {
     
     ggplot(penguins_filt, aes(x = body_mass, y = flipper_len, color = sex)) +
       geom_point() +
-      labs(title = "Flipper Length vs Body Mass by Sex",
-           subtitle = input$in_species)
+      xlab("body mass") +
+      ylab("flipper length")
     
   })
   
@@ -56,7 +62,6 @@ server <- function(input, output, session) {
                 `Avg Flipper Length` = mean(flipper_len),
                 `Avg Body Mass` = mean(body_mass))
   })
-  
   
 }
 
