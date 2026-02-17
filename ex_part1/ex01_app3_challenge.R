@@ -5,7 +5,6 @@
 ## (don't worry about throwing out missing values)
 
 library(shiny)
-library(ggplot2)
 library(dplyr)
 
 ui <- fluidPage(
@@ -20,17 +19,10 @@ ui <- fluidPage(
                   choices = unique(penguins$species))
     ),
     
-    
     mainPanel(
-      
       h3("Sample Size"),
       p("Number of observations for the selected species:"),
-      p("xx"),
-      hr(),       ## add a horizontal rule
-      
-      h3("Flipper Length vs. Body Mass"),
-      plotOutput("out_peng_flip_body", height = "300px"),
-      hr(),
+      p("XX"),
       
       h3("Summary Stats"),
       tableOutput("out_peng_sumstats")
@@ -41,18 +33,6 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  
-  output$out_peng_flip_body <- renderPlot({
-    
-    penguins_filt <- penguins |> 
-      filter(species == input$in_species) 
-    
-    ggplot(penguins_filt, aes(x = body_mass, y = flipper_len, color = sex)) +
-      geom_point() +
-      xlab("body mass") +
-      ylab("flipper length")
-    
-  })
   
   output$out_peng_sumstats <- renderTable({
     penguins_filt <- penguins |> 

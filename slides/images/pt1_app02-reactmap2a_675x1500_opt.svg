@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="1500" height="675" version="1.1" viewBox="0 0 396.88 178.59" xmlns="http://www.w3.org/2000/svg">
+ <style/>
+ <defs>
+  <marker id="ConcaveTriangle" overflow="visible" markerHeight="1" markerWidth="1" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 1 1">
+   <path transform="scale(.7)" d="m-2-4 11 4-11 4c2-2.33 2-5.66 0-8z" fill="context-stroke" fill-rule="evenodd"/>
+  </marker>
+ </defs>
+ <g stroke-width=".79">
+  <path d="m10.228 26.205h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821"/>
+  <path d="m390 40.161h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"/>
+  <path d="m390.85 107.86h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"/>
+ </g>
+ <g fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19">
+  <text x="9.2688551" y="23.44912" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.2688551" y="23.44912" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput("in_species")</tspan><tspan x="9.2688551" y="31.38662" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <text x="276.76266" y="30.823116" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="276.76266" y="30.823116" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">plotOutput("out_peng_flip_body")</tspan><tspan x="276.76266" y="38.760616" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+  <text x="276.25894" y="144.59406" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="276.25894" y="144.59406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">tableOutput("out_peng_sumstats")</tspan><tspan x="276.25894" y="152.53156" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+ </g>
+ <path d="m10.228 73.947h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"/>
+ <text x="9.2688551" y="71.191406" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.2688551" y="71.191406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput("in_island")</tspan><tspan x="9.2688551" y="79.128906" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+ <path d="m10.228 120.94h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"/>
+ <text x="9.2688551" y="118.18929" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="9.2688551" y="118.18929" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">sliderInput("in_pct")</tspan><tspan x="9.2688551" y="126.12679" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"/></text>
+ <g class="fragment" fill="none">
+  <g transform="matrix(1.2016 0 0 .99641 -10.303 .30104)" stroke="#00f">
+   <path d="m50.3 84.337c83.319-11.345 83.189-30.361 248.33-32.05" marker-end="url(#ConcaveTriangle)" stroke-width=".64426"/>
+   <path d="m50.062 130.92c53.287 0.8903 60.308-75.917 248.6-74.205" marker-end="url(#ConcaveTriangle)" stroke-width=".63543"/>
+   <path d="m50.186 36.965c83.205 0.76981 97.526 14.724 248.57 11.155" marker-end="url(#ConcaveTriangle)" stroke-width=".64353"/>
+  </g>
+  <g transform="matrix(1.2235 0 0 .99641 -11.369 .3168)" stroke="#800080">
+   <path d="m50.351 89.103c45.839 25.914 94.077 29.301 246 30.39" marker-end="url(#ConcaveTriangle)" stroke-width=".64426"/>
+   <path d="m49.898 135.81c87.328-0.22283 54.831-9.7611 246.58-12.129" marker-end="url(#ConcaveTriangle)" stroke-width=".63543"/>
+   <path d="m50.104 40.505c43.665 4.4901 28.012 67.854 246.57 74.786" marker-end="url(#ConcaveTriangle)" stroke-width=".64353"/>
+  </g>
+ </g>
+ <g class="fragment">
+  <rect x="205.4" y="36.727" width="127.93" height="30.854" fill="#fff" stroke="#00f" stroke-dasharray="0.587578, 0.587578" stroke-width=".17348"/>
+  <text x="207.2468" y="42.325062" fill="#0000ff" font-family="Consolas" font-size="5.6445px" stroke-dasharray="0.643533, 0.643533" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="207.2468" y="42.325062" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">penguins |&gt;</tspan><tspan x="207.2468" y="49.38065" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> filter(species == input$in_species,</tspan><tspan x="207.2468" y="56.436237" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">        island == input$in_island) |&gt; </tspan><tspan x="207.2468" y="63.491825" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> slice_sample(prop = input$in_pct / 100)</tspan></text>
+  <g transform="translate(0 61.944)">
+   <rect x="205.4" y="36.727" width="127.93" height="30.854" fill="#fff" stroke="#00f" stroke-dasharray="0.587578, 0.587578" stroke-width=".17348"/>
+   <text x="207.2468" y="42.325062" fill="#550000" font-family="Consolas" font-size="5.6445px" stroke-dasharray="0.643533, 0.643533" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><tspan x="207.2468" y="42.325062" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">penguins |&gt;</tspan><tspan x="207.2468" y="49.38065" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> filter(species == input$in_species,</tspan><tspan x="207.2468" y="56.436237" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">        island == input$in_island) |&gt; </tspan><tspan x="207.2468" y="63.491825" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> slice_sample(prop = input$in_pct / 100)</tspan></text>
+  </g>
+ </g>
+</svg>

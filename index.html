@@ -11,7 +11,7 @@
 
 
 
-<title>index.knit</title>
+<title>Building DSTs with R/Shiny</title>
 
 <script src="lib/header-attrs-2.30/header-attrs.js"></script>
 <script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -177,18 +177,24 @@ p, li, summary {
   /* font-size: 110%; */
 }
 span.note {
-  font-size:80%;
-  font-style:italic;
+  font-size: 80%;
+  font-style: italic;
 }
 a.answers {
-  font-style:italic;
+  font-style: italic;
 }
-div.bigger, div.bigger {
-  font-size:150%
+div.bigger > p {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top:1em;
+}
+div.wrkshp-date > p{
+  font-weight: normal;
+  font-size: 120%;
+  font-style: italic;
 }
 </style>
-<p><br />
-</p>
 <p><br />
 </p>
 <div style="float:right; padding:20px;">
@@ -197,11 +203,10 @@ div.bigger, div.bigger {
 <h1 class="title">
 Building Decision Support Web Apps with Shiny for R
 </h1>
-<div style="clear:both;">
-
-</div>
+<p><br />
+</p>
 <details>
-<summary style="cursor:pointer; color:#337ab7; font-size:150%; margin-bottom:10px;">
+<summary style="cursor:pointer; color:#337ab7; font-size:150%; font-weight:bold; margin-bottom:10px;">
 Preparing for the Workshop
 </summary>
 <ul>
@@ -241,13 +246,22 @@ click [here](coming soon){target="_blank" rel="noopener"} to make a copy of the 
 <div class="bigger">
 <p><a href="./slides/shiny-dsts-pt1.html" target="_blank"
 rel="noopener">Part 1. Intro to Shiny</a></p>
-<p><a href="./slides/shiny-dsts-pt1.html" target="_blank"
-rel="noopener">Part 2. Building a Decision Support Tool</a></p>
+<div class="wrkshp-date">
+<p>February 12, 2026</p>
 </div>
+<p>Part 2. Case Study</p>
+<div class="wrkshp-date">
+<p>Coming soon</p>
+</div>
+</div>
+<!--- [](./slides/shiny-dsts-pt2.html){target="_blank" rel="noopener"} --->
 <p><br />
 </p>
 <p><br />
 </p>
+<div style="clear:both;">
+
+</div>
 <div style="text-align:center;">
 <p><a href="https://ucanr.edu/program/informatics-and-gis-program"><img
 src="images/igis-logo_333x100.png" style="display:inline;" /></a> <a
@@ -255,12 +269,6 @@ href="https://uc-love-data-week.github.io/"><img
 src="images/ldw-circuit-color_bg-white_2022_225x191.png"
 style="display:inline; height:100px; margin-left:40px;" /></a></p>
 </div>
-<!--------------
-[![](./images/igis-logo_333x100.png){style="display:block; margin:1em auto;"}](https://ucanr.edu/program/informatics-and-gis-program)
-
-<img src='images/ldw-circuit-color_bg-white_2022_225x191.png' style='margin-bottom:0.5em; margin-top:1em; width:180px;'/><br/>
-
-------------->
 
 
 

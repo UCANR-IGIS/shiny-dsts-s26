@@ -198,7 +198,7 @@
 
 <section id="title-slide" data-visibility="hidden" class="quarto-title-block center">
   <h1 class="title">Building Decision Support Tools with Shiny</h1>
-  <p class="subtitle">Part 1: Getting Started</p>
+  <p class="subtitle">Part 1: Intro to Shiny</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -211,7 +211,7 @@
 Building Decision Support<br>Tools with Shiny
 </p>
 <p class="title-slide-title">
-Part 1: Getting Started with Shiny
+Part 1: Intro to Shiny
 </p>
 <p><br>
 </p>
@@ -326,13 +326,21 @@ Import climate data from Cal-Adapt using the API
 <p><br>
 </p>
 <p>A delivery vehicle for a R script.</p>
-<p>A R package that simplifies creating web apps from R code.</p>
-<p>A web platform that allows you to create HTML pages<br>with R components.</p>
+<p>A package that allows you to create HTML pages<br>with R components.</p>
 </section>
 <section id="shiny-architecture" class="slide level2" data-menu-title="Shiny Architecture">
 <h2>Architecture of a Shiny App</h2>
 
 <img data-src="./images/shiny-architecture_1165x456.png" class="r-stretch"></section>
+<section id="why-is-shiny-so-popular" class="slide level2 double-spaced-centered" data-menu-title="Shiny Popularity">
+<h2>Why is Shiny So Popular?</h2>
+<p>Solves a real pain point for data scientists.</p>
+<p>Lowers the bar for creating web apps (dramatically!)</p>
+<p>Takes care of all the browser ↔︎ server communication.</p>
+<p>Works with both R and Python.</p>
+<p>Extremely customizable.</p>
+<p>“One-click” publishing.</p>
+</section>
 <section id="workshop-goals" class="slide level2 double-spaced-centered">
 <h2>Workshop Goals</h2>
 <p>Understand how Shiny works.</p>
@@ -341,15 +349,22 @@ Import climate data from Cal-Adapt using the API
 <p>Be able to effectively utilize documentation and GenAI tools.</p>
 <p>Take a decision support model and turn it into a Shiny app.</p>
 </section>
-<section id="hands-on" class="slide level2 double-spaced-centered">
-<h2>Hands-on</h2>
+<section id="lets-make-a-shiny-app" class="slide level2">
+<h2>Let’s make a Shiny app!</h2>
+<div class="centered-box" style="background-color:#cfffd6;">
+<p><strong>Posit Cloud:</strong></p>
+<p><a href="https://posit.cloud/content/11896218" class="uri">https://posit.cloud/content/11896218</a></p>
+</div>
 <p><br>
 </p>
-<p><br>
-</p>
-<p>Let’s make a Shiny app!</p>
+<div class="centered-box" style="background-color:#d2e2ff;">
+<p><strong>RStudio Desktop:</strong></p>
+<p><code>usethis::use_course("https://bit.ly/shiny-dsts-s26")</code></p>
+<p><a href="https://bit.ly/shiny-dsts-s26" class="uri">https://bit.ly/shiny-dsts-s26</a></p>
+<p>After opening, run: <code>install_packages.R</code></p>
+</div>
 <aside class="notes">
-<p>Show them how to create a new Shiny in RStudio</p>
+<p>Before I switch to my RStudio, copy paste these notes into Zoom chat.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -362,15 +377,24 @@ Import climate data from Cal-Adapt using the API
           display:block!important;
       }</style></aside>
 </section>
-<section id="old-faithful-what-we-learned" class="slide level2 double-spaced-left">
-<h2>Old Faithful: What We Learned</h2>
+<section id="old-faithful-what-we-learned" class="slide level2">
+<h2>Old Faithful:<br>What We Learned</h2>
+<div class="columns">
+<div class="column" style="font-size:150%; margin-bottom:3rem;">
 <p>A Shiny app is just R code.</p>
+<p><br>
+</p>
 <p>It’s usually a single file called app.R</p>
+<p><br>
+</p>
 <p>It’s usually saved a folder with other stuff needed (e.g., data).</p>
+</div><div class="column" style="width:28%;">
+<p><img data-src="./images/oldfaithful-select-input-color_630x910.png" class="appscreenshot"></p>
+</div></div>
 </section>
 <section id="not-typical-r-script" class="slide level2 center" data-menu-title="Not a Typical R Script">
 <h2></h2>
-<div class="centerme" data-menu-title="app.R not typical">
+<div class="centerme" data-menu-title="app.R not typical" style="font-size:150%;">
 <p>But app.R is not a typical R script…</p>
 </div>
 </section>
@@ -478,6 +502,20 @@ Import climate data from Cal-Adapt using the API
 <span id="cb2-26"><a href=""></a><span class="co"># Run the app</span></span>
 <span id="cb2-27"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<aside class="notes">
+<p>The preamble is where you load your global environment.</p>
+<p>The UI is where you add <strong>static HTML</strong>, inputs, and outputs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="html-css" class="slide level2" data-menu-title="HTML &amp; CSS">
 <h2>Your New Best Friend: HTML &amp; CSS</h2>
@@ -521,28 +559,51 @@ For more info, please see our
 <h2><code>app01.R</code></h2>
 <div class="columns">
 <div class="column" style="width:58%;">
-<p><strong>Penguin Data Explorer</strong></p>
-<ul>
-<li><p>Start a new Shiny app from scratch.</p></li>
-<li><p>One input - select box</p></li>
-<li><p>Two outputs - plot and table</p></li>
-</ul>
+<p><strong>Penguin Data Explorer</strong> <sup>1</sup></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">head</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species    island bill_len bill_dep flipper_len body_mass    sex year
+1  Adelie Torgersen     39.1     18.7         181      3750   male 2007
+2  Adelie Torgersen     39.5     17.4         186      3800 female 2007
+3  Adelie Torgersen     40.3     18.0         195      3250 female 2007
+4  Adelie Torgersen       NA       NA          NA        NA   &lt;NA&gt; 2007
+5  Adelie Torgersen     36.7     19.3         193      3450 female 2007
+6  Adelie Torgersen     39.3     20.6         190      3650   male 2007</code></pre>
+</div>
+</div>
+<p><br>
+</p>
+<p><strong>Overview</strong></p>
+<div class="list-nospace">
+<ol type="1">
+<li><p>Start a new Shiny app from scratch</p></li>
+<li><p>One input: select box</p></li>
+<li><p>Two outputs: plot and table</p></li>
+</ol>
+</div>
 <p><br>
 </p>
 </div><div class="column" style="width:38%;">
 <p><img data-src="./images/pt1_app01-screenshot_540x850.png" class="appscreenshot"></p>
 </div></div>
-</section>
-<section id="workshop-materials" class="slide level2 double-spaced-centered">
-<h2>Workshop Materials</h2>
-<p><strong>Posit Cloud:</strong></p>
-<p><a href="https://posit.cloud/content/11896218" class="uri">https://posit.cloud/content/11896218</a></p>
 <p><br>
 </p>
-<p><strong>RStudio Desktop:</strong></p>
-<p><a href="https://bit.ly/shiny-dsts-s26" class="uri">https://bit.ly/shiny-dsts-s26</a></p>
-<p><code>usethis::use_course("https://bit.ly/shiny-dsts-s26")</code></p>
-</section>
+<aside class="notes">
+<p>If you a RStudio Desktop and using R &lt; 4.5.0, then you should install the <code>basepenguins</code> package:</p>
+<pre><code>install.packages("basepenguins")</code></pre>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Requires R 4.5.0 or later, or the <code>basepenguins</code> package</p></li></ol></aside></section>
 <section id="app01.r-reactivity" class="slide level2">
 <h2><code>app01.R</code> Reactivity</h2>
 <object type="image/svg+xml" data="images/pt1_app01-reactmap_opt.svg" class="centered">
@@ -587,15 +648,15 @@ div()</p>
 </div>
 </div>
 </section>
-<section id="output-render-partners" class="slide level2">
-<h2><code>***Output()</code> ↔︎ <code>render***()</code> partners</h2>
+<section id="output-render-pairs" class="slide level2">
+<h2><code>***Output()</code> ↔︎ <code>render***()</code> pairs</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table caption-top" style="">
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">UI Function (Placement)</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Render Function</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">UI function</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Render function</th>
 </tr>
 </thead>
 <tbody>
@@ -636,18 +697,19 @@ div()</p>
 </p>
 <p>Example: <code>renderText()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>output<span class="sc">$</span>out_num_hurricanes <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb4-2"><a href=""></a>  </span>
-<span id="cb4-3"><a href=""></a>  <span class="do">## renderText expects a character object</span></span>
-<span id="cb4-4"><a href=""></a>  </span>
-<span id="cb4-5"><a href=""></a>  <span class="do">## You can have a 100 lines of code if needed</span></span>
-<span id="cb4-6"><a href=""></a>  category3_hurricanes <span class="ot">&lt;-</span> storms <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href=""></a>    <span class="fu">filter</span>(category <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-8"><a href=""></a>    <span class="fu">distinct</span>(name, year)</span>
-<span id="cb4-9"><a href=""></a>  </span>
-<span id="cb4-10"><a href=""></a>  <span class="do">## As long as the last one returns a character object!</span></span>
-<span id="cb4-11"><a href=""></a>  <span class="fu">nrow</span>(category3_hurricanes) <span class="sc">|&gt;</span> <span class="fu">as.character</span>()</span>
-<span id="cb4-12"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>output<span class="sc">$</span>out_num_hurricanes <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb7-2"><a href=""></a>  </span>
+<span id="cb7-3"><a href=""></a>  <span class="do">## renderText expects a character object</span></span>
+<span id="cb7-4"><a href=""></a>  </span>
+<span id="cb7-5"><a href=""></a>  <span class="do">## You can have a 100 lines of code if needed</span></span>
+<span id="cb7-6"><a href=""></a>  category3_hurricanes <span class="ot">&lt;-</span> storms <span class="sc">|&gt;</span> </span>
+<span id="cb7-7"><a href=""></a>    <span class="fu">filter</span>(category <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-8"><a href=""></a>    <span class="fu">distinct</span>(name, year)</span>
+<span id="cb7-9"><a href=""></a>  </span>
+<span id="cb7-10"><a href=""></a>  <span class="do">## As long as the last one returns a character object!</span></span>
+<span id="cb7-11"><a href=""></a>  <span class="fu">nrow</span>(category3_hurricanes) <span class="sc">|&gt;</span> <span class="fu">as.character</span>()</span>
+<span id="cb7-12"><a href=""></a>  </span>
+<span id="cb7-13"><a href=""></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="genai" class="slide level2 center" data-menu-title="GenAI">
@@ -707,45 +769,58 @@ div()</p>
 </section>
 <section id="app02.r-reactivity-diagram" class="slide level2">
 <h2><code>app02.R</code> Reactivity diagram</h2>
-<object type="image/svg+xml" data="images/pt1_app02-reactmap_opt.svg" class="centered">
-</object>
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="1500" height="675" version="1.1" viewbox="0 0 396.88 178.59" xmlns="http://www.w3.org/2000/svg">
+<style></style>
+<defs> <marker id="ConcaveTriangle" overflow="visible" markerheight="1" markerwidth="1" orient="auto-start-reverse" preserveaspectratio="xMidYMid" viewbox="0 0 1 1"> <path transform="scale(.7)" d="m-2-4 11 4-11 4c2-2.33 2-5.66 0-8z" fill="context-stroke" fill-rule="evenodd"></path> </marker> </defs> <g stroke-width=".79"> <path d="m10.228 26.205h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821"></path> <path d="m390 40.161h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"></path> <path d="m390.85 107.86h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"></path> </g> <g fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19"> <text x="9.2688551" y="23.44912" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="9.2688551" y="23.44912" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput(“in_species”)</tspan><tspan x="9.2688551" y="31.38662" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <text x="276.76266" y="30.823116" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="276.76266" y="30.823116" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">plotOutput(“out_peng_flip_body”)</tspan><tspan x="276.76266" y="38.760616" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <text x="276.25894" y="144.59406" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="276.25894" y="144.59406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">tableOutput(“out_peng_sumstats”)</tspan><tspan x="276.25894" y="152.53156" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> </g> <path d="m10.228 73.947h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"></path> <text x="9.2688551" y="71.191406" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="9.2688551" y="71.191406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput(“in_island”)</tspan><tspan x="9.2688551" y="79.128906" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <path d="m10.228 120.94h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"></path> <text x="9.2688551" y="118.18929" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="9.2688551" y="118.18929" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">sliderInput(“in_pct”)</tspan><tspan x="9.2688551" y="126.12679" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <g class="fragment" fill="none"> <g transform="matrix(1.2016 0 0 .99641 -10.303 .30104)" stroke="#00f"> <path d="m50.3 84.337c83.319-11.345 83.189-30.361 248.33-32.05" marker-end="url(#ConcaveTriangle)" stroke-width=".64426"></path> <path d="m50.062 130.92c53.287 0.8903 60.308-75.917 248.6-74.205" marker-end="url(#ConcaveTriangle)" stroke-width=".63543"></path> <path d="m50.186 36.965c83.205 0.76981 97.526 14.724 248.57 11.155" marker-end="url(#ConcaveTriangle)" stroke-width=".64353"></path> </g> <g transform="matrix(1.2235 0 0 .99641 -11.369 .3168)" stroke="#800080"> <path d="m50.351 89.103c45.839 25.914 94.077 29.301 246 30.39" marker-end="url(#ConcaveTriangle)" stroke-width=".64426"></path> <path d="m49.898 135.81c87.328-0.22283 54.831-9.7611 246.58-12.129" marker-end="url(#ConcaveTriangle)" stroke-width=".63543"></path> <path d="m50.104 40.505c43.665 4.4901 28.012 67.854 246.57 74.786" marker-end="url(#ConcaveTriangle)" stroke-width=".64353"></path> </g> </g> <g class="fragment"> <rect x="205.4" y="36.727" width="127.93" height="30.854" fill="#fff" stroke="#00f" stroke-dasharray="0.587578, 0.587578" stroke-width=".17348"></rect> <text x="207.2468" y="42.325062" fill="#0000ff" font-family="Consolas" font-size="5.6445px" stroke-dasharray="0.643533, 0.643533" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="207.2468" y="42.325062" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">penguins |&gt;</tspan><tspan x="207.2468" y="49.38065" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> filter(species == input$in_species,</tspan><tspan x="207.2468" y="56.436237" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> island == input$in_island) |&gt; </tspan><tspan x="207.2468" y="63.491825" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> slice_sample(prop = input$in_pct / 100)</tspan></text> <g transform="translate(0 61.944)"> <rect x="205.4" y="36.727" width="127.93" height="30.854" fill="#fff" stroke="#00f" stroke-dasharray="0.587578, 0.587578" stroke-width=".17348"></rect> <text x="207.2468" y="42.325062" fill="#550000" font-family="Consolas" font-size="5.6445px" stroke-dasharray="0.643533, 0.643533" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="207.2468" y="42.325062" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">penguins |&gt;</tspan><tspan x="207.2468" y="49.38065" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> filter(species == input$in_species,</tspan><tspan x="207.2468" y="56.436237" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> island == input$in_island) |&gt; </tspan><tspan x="207.2468" y="63.491825" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> slice_sample(prop = input$in_pct / 100)</tspan></text> </g> </g>
+</svg>
 </section>
-<section id="new-shiny-method-reactive" class="slide level2">
-<h2>New Shiny method: <code>reactive()</code></h2>
+<section id="app02.r-reactivity-diagram-1" class="slide level2">
+<h2><code>app02.R</code> Reactivity diagram</h2>
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="1500" height="675" version="1.1" viewbox="0 0 396.88 178.59" xmlns="http://www.w3.org/2000/svg">
+<style></style>
+<defs> <marker id="ConcaveTriangle-9" overflow="visible" markerheight="1" markerwidth="1" orient="auto-start-reverse" preserveaspectratio="xMidYMid" viewbox="0 0 1 1"> <path transform="scale(.7)" d="m-2-4 11 4-11 4c2-2.33 2-5.66 0-8z" fill="context-stroke" fill-rule="evenodd"></path> </marker> </defs> <g stroke-width=".79"> <path d="m10.228 26.205h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821"></path> <path d="m390 40.161h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"></path> <path d="m390.85 107.86h-34.455l13.934 12.565-13.934 12.565h34.455z" fill="#87aade" stroke="#214478"></path> </g> <g fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19"> <text x="9.2688551" y="23.44912" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="9.2688551" y="23.44912" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput(“in_species”)</tspan><tspan x="9.2688551" y="31.38662" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <text x="276.76266" y="30.823116" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="276.76266" y="30.823116" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">plotOutput(“out_peng_flip_body”)</tspan><tspan x="276.76266" y="38.760616" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <text x="276.25894" y="144.59406" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="276.25894" y="144.59406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">tableOutput(“out_peng_sumstats”)</tspan><tspan x="276.25894" y="152.53156" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> </g> <path d="m10.228 73.947h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"></path> <text x="9.2688551" y="71.191406" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="9.2688551" y="71.191406" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">selectInput(“in_island”)</tspan><tspan x="9.2688551" y="79.128906" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <path d="m10.228 120.94h25.748l13.934 12.565-13.934 12.565h-25.748z" fill="#c6e9af" stroke="#447821" stroke-width=".79"></path> <text x="9.2688551" y="118.18929" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="9.2688551" y="118.18929" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">sliderInput(“in_pct”)</tspan><tspan x="9.2688551" y="126.12679" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <g class="fragment"> <path d="m311.98 85.859c13.235 0.41191 30.145-34.518 42.932-34.353" fill="none" marker-end="url(#ConcaveTriangle-9)" stroke="#00f" stroke-width=".97896"></path> <path d="m311.98 86.833c13.235-0.41192 30.145 34.518 42.932 34.353" fill="none" marker-end="url(#ConcaveTriangle-9)" stroke="#00f" stroke-width=".97896"></path> <path d="m296.88 73.918h-29.17l11.797 12.61-11.797 12.61h29.17l11.376-12.61z" fill="#fae" stroke="#504" stroke-width=".72818"></path> <path d="m54.616 86.336 206.95-0.3117" fill="none" marker-end="url(#ConcaveTriangle-9)" stroke="#00f" stroke-width=".99526"></path> <path d="m55.483 133.18c12.124-1.4218 26.503-0.969 33.451-11.5 17.512-26.545 28.109-29.176 172.86-29.376" fill="none" marker-end="url(#ConcaveTriangle-9)" stroke="#00f" stroke-width=".99413"></path> <text x="269.01877" y="107.32054" fill="#1a1a1a" font-family="Consolas" font-size="6.35px" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="269.01877" y="107.32054" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">reactive()</tspan><tspan x="269.01877" y="115.25804" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"></tspan></text> <path d="m55.483 38.534c12.124 1.4218 26.503 0.969 33.451 11.5 17.512 26.545 28.109 29.176 172.86 29.376" fill="none" marker-end="url(#ConcaveTriangle-9)" stroke="#00f" stroke-width=".99413"></path> </g> <g class="fragment" transform="translate(-80.715 34.324)"> <rect x="205.4" y="34.317" width="127.92" height="33.261" fill="#fff" stroke="#00f" stroke-dasharray="0.610048, 0.610048" stroke-width=".18011"></rect> <text x="207.2468" y="42.325062" fill="#550000" font-family="Consolas" font-size="5.6445px" stroke-dasharray="0.643533, 0.643533" stroke-width=".19" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" space="preserve"><tspan x="207.2468" y="42.325062" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">penguins |&gt;</tspan><tspan x="207.2468" y="49.38065" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> filter(species == input$in_species,</tspan><tspan x="207.2468" y="56.436237" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> island == input$in_island) |&gt; </tspan><tspan x="207.2468" y="63.491825" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal"> slice_sample(prop = input$in_pct / 100)</tspan></text> </g>
+</svg>
+</section>
+<section id="new-shiny-object-reactive" class="slide level2">
+<h2>New Shiny object: <code>reactive()</code></h2>
 <p>‘reactive’ objects are:</p>
 <ul>
-<li>created with <code>reactive()</code> in the server section<br>
-</li>
 <li>like any R object, but reactive to other objects<br>
+</li>
+<li>created with <code>reactive()</code> in the server section<br>
 </li>
 <li>defined by a piece of code (that gets re-run when needed)<br>
 </li>
 <li>often used to eliminate duplication</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb5-2"><a href=""></a>  </span>
-<span id="cb5-3"><a href=""></a>  data_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb5-4"><a href=""></a>    penguins <span class="sc">|&gt;</span> </span>
-<span id="cb5-5"><a href=""></a>      <span class="fu">filter</span>(species <span class="sc">==</span> input<span class="sc">$</span>species) <span class="sc">|&gt;</span> </span>
-<span id="cb5-6"><a href=""></a>      <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span> </span>
-<span id="cb5-7"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
-<span id="cb5-8"><a href=""></a>  })</span>
-<span id="cb5-9"><a href=""></a></span>
-<span id="cb5-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb8-2"><a href=""></a>  </span>
+<span id="cb8-3"><a href=""></a>  data_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb8-4"><a href=""></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href=""></a>      <span class="fu">filter</span>(species <span class="sc">==</span> input<span class="sc">$</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb8-6"><a href=""></a>      <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb8-7"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb8-8"><a href=""></a>  })</span>
+<span id="cb8-9"><a href=""></a></span>
+<span id="cb8-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="using-reactive-objects" class="slide level2">
 <h2>Using Reactive Objects</h2>
-<p>Even though reactive objects are used like standard R objects, because they are dynamic they are called like functions:</p>
+<p>Even though reactive objects are used like standard R objects, they are called like functions:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb6-2"><a href=""></a>  </span>
-<span id="cb6-3"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb6-4"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
-<span id="cb6-5"><a href=""></a>  })</span>
-<span id="cb6-6"><a href=""></a></span>
-<span id="cb6-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb9-2"><a href=""></a>  </span>
+<span id="cb9-3"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb9-4"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
+<span id="cb9-5"><a href=""></a>  })</span>
+<span id="cb9-6"><a href=""></a></span>
+<span id="cb9-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>&nbsp;</p>
 <ul>
@@ -761,60 +836,57 @@ div()</p>
 <p>Reactives are often used to store data in decision support tools that wrangle data.</p>
 <p>You can use reactive in <code>render****()</code> functions, or other reactives (just remember to include the <code>()</code>!).</p>
 </section>
-<section id="more-advanced-techniques-for-next-time" class="slide level2">
-<h2>More Advanced Techniques (for next time!)</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table caption-top" style="">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Function(s)</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; font-family: monospace;">bindEvent(), isolate()</td>
-<td style="text-align: left;">Control reactivity (when you don't always want reactivity to be immediate)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; font-family: monospace;">observe()</td>
-<td style="text-align: left;">Reactive code that doesn't return anything</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; font-family: monospace;">reactiveVal()</td>
-<td style="text-align: left;">Like a reactive but can be updated from multiple places</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; font-family: monospace;">update****()</td>
-<td style="text-align: left;">Update input elements</td>
-</tr>
-</tbody>
-</table>
-</div>
+<section id="app03.r-challenge" class="slide level2">
+<h2><code>app03.R</code> Challenge</h2>
+<div class="columns">
+<div class="column" style="font-size:150%; margin-bottom:3rem;">
+<p>Replace the ‘XX’ with the actual number of observations.</p>
+</div><div class="column" style="width:38%;">
+<p><img data-src="./images/pt1_app03-challenge_start-circled_640x680.png" class="appscreenshot" style="border:2px solid gray; padding:10px;"></p>
+</div></div>
+</section>
+<section id="more-advanced-techniques" class="slide level2">
+<h2>More Advanced Techniques</h2>
+<ul>
+<li><p>control reactivity with <code>isolate()</code> and <code>bindEvent()</code></p></li>
+<li><p>run arbitrary code in a reactive context with <code>observe()</code></p></li>
+<li><p><code>reactiveVal()</code> - like a <code>reactive()</code> that you can update in multiple places</p></li>
+<li><p>trapping errors</p></li>
+<li><p>take your UI to the next level:</p></li>
+</ul>
+<div class="indented2">
+<ul>
+<li>interactive HTML widgets</li>
+<li>theming and styling</li>
+</ul>
 </div>
 <p><br>
 </p>
-<p>Taking your UI to the next level:</p>
-<ul>
-<li>HTML widgets!</li>
-<li>theming and styling</li>
-<li>much more</li>
-</ul>
 </section>
 <section id="publishing-shiny-apps" class="slide level2">
 <h2>Publishing Shiny Apps</h2>
 <p>For other people to use your Shiny app, it must be published to a server that is running Shiny Server.</p>
 <p>To get started, look for the ‘Publish’ button in RStudio (ShinyApps.io)</p>
 <p><img data-src="./images/publish-btn-rstudio_185x91.png" class="" style="display:block; margin:0 auto; width:320px;"></p>
-<p>Positron:</p>
-<div class="indented2">
-<ul>
-<li>install ‘Posit Publisher Extension’<br>
+<div class="indented4 indented4r" title="Publishing from Positron">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Publishing from Positron</strong></p>
+</div>
+<div class="callout-content">
+<p>Publishing Shiny Apps from Positron is not hard but requires a couple of setup steps:</p>
+<ol type="i">
+<li>install the ‘Posit Publisher Extension’<br>
 </li>
-<li>create a manifest file<br>
-</li>
-</ul>
+<li>create a manifest file</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="hosting-options" class="slide level2">
@@ -876,6 +948,7 @@ div()</p>
 <h2>End!</h2>
 
 </section></section>
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
