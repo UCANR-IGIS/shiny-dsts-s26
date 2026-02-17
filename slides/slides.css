@@ -97,3 +97,8 @@ div.fakecode {
 section#html-css-allies pre {
   font-size: 75% !important;
 }
+svg text::selection {
+  fill: white; 
+}
+
+
