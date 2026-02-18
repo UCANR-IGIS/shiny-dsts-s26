@@ -1,3 +1,12 @@
+## app2.R
+## Starting with the Penguin Data Explorer we built in app1, add a filter for:
+##  - island 
+##  - random sample
+
+## STEP 1:
+## Add a select input for the island right below the species input. 
+## Give it the id = "in_island"
+
 library(shiny)
 library(ggplot2)
 library(dplyr)

@@ -67,7 +67,7 @@ div.centered-box {
   text-align:center;
 }
 
-div.list-nospace > ol > li {
+div.list-nospace li {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }

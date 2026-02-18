@@ -520,32 +520,33 @@ Import climate data from Cal-Adapt using the API
 <section id="html-css" class="slide level2" data-menu-title="HTML &amp; CSS">
 <h2>Your New Best Friend: HTML &amp; CSS</h2>
 <p>When programming in Shiny, you have a powerful ally: <span style="font-weight:bold; font-size:120%; color:blue;">HTML &amp; CSS</span></p>
-<p><br>
-</p>
 <p><code>shiny</code> &amp; <code>htmltools</code> have <em>dozens</em> of functions that produce HTML code.</p>
 <p><br>
 </p>
 <p>Example:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"For more info, please see our "</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="st">"web page"</span>, <span class="at">href =</span> <span class="st">"https://igis.ucanr.edu/"</span>), <span class="st">"."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>tags<span class="sc">$</span><span class="fu">p</span>(<span class="st">"For more info, go to our "</span>, tags<span class="sc">$</span><span class="fu">a</span>(<span class="st">"web page"</span>, <span class="at">href =</span> <span class="st">"https://igis.ucanr.edu/"</span>), <span class="st">"."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>generates:</p>
+<p><code>&lt;p&gt;For more info, go to our &lt;a href="https://igis.ucanr.edu/"&gt;web page&lt;/a&gt;.&lt;/p&gt;</code></p>
+<p>which renders as:</p>
+<div class="cell">
 <div class="cell-output-display">
 <p>
-For more info, please see our 
+For more info, go to our 
 <a href="https://igis.ucanr.edu/">web page</a>
 .
 </p>
 </div>
 </div>
-<p><br>
-</p>
-<div title="HTML Functions">
+<div title="More HTML Functions">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>HTML Functions</strong></p>
+<p><strong>More HTML Functions</strong></p>
 </div>
 <div class="callout-content">
 <p>To see more HTML functions, run <code>names(shiny::tags)</code></p>
@@ -620,7 +621,8 @@ h1()<br>
 h2()<br>
 h3()<br>
 strong()<br>
-em() img()</p>
+em()<br>
+img()</p>
 </div>
 </div><div class="column" style="width:45%;">
 <p>Layout:</p>
@@ -749,7 +751,7 @@ div()</p>
 <h2>GenAI Best Practices</h2>
 <p>Only use GenAI tools approved by your organization.</p>
 <p>Smaller questions are generally better.</p>
-<p>Understand the fundamentals so you can evaluate output.</p>
+<p><strong>Understand the fundamentals so you can evaluate output.</strong></p>
 <p>Ask the same question to multiple LLMs.</p>
 <p>Treat it like taking a class - get curious, ask follow-up questions, read documentation, etc.</p>
 </section>
@@ -789,13 +791,12 @@ div()</p>
 <h2>New Shiny object: <code>reactive()</code></h2>
 <p>‘reactive’ objects are:</p>
 <ul>
-<li>like any R object, but reactive to other objects<br>
+<li>like a standard R object, but dynamic and knows when to update itself</li>
+<li>created with <code>reactive({...})</code> in the server section<br>
 </li>
-<li>created with <code>reactive()</code> in the server section<br>
+<li>defined by a piece of code that gets re-run when needed<br>
 </li>
-<li>defined by a piece of code (that gets re-run when needed)<br>
-</li>
-<li>often used to eliminate duplication</li>
+<li>often used in Shiny apps to create intermediate objects to eliminate duplication</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
@@ -816,18 +817,31 @@ div()</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
 <span id="cb9-2"><a href=""></a>  </span>
-<span id="cb9-3"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
-<span id="cb9-4"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
-<span id="cb9-5"><a href=""></a>  })</span>
-<span id="cb9-6"><a href=""></a></span>
-<span id="cb9-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-3"><a href=""></a>  data_filtered <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb9-4"><a href=""></a>    penguins <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href=""></a>      <span class="fu">filter</span>(species <span class="sc">==</span> input<span class="sc">$</span>species) <span class="sc">|&gt;</span> </span>
+<span id="cb9-6"><a href=""></a>      <span class="fu">group_by</span>(island) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb9-8"><a href=""></a>  })</span>
+<span id="cb9-9"><a href=""></a>  </span>
+<span id="cb9-10"><a href=""></a>  output<span class="sc">$</span>summary_stats <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
+<span id="cb9-11"><a href=""></a>    <span class="fu">data_filtered</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(island, mean_weight)</span>
+<span id="cb9-12"><a href=""></a>  })</span>
+<span id="cb9-13"><a href=""></a></span>
+<span id="cb9-14"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>&nbsp;</p>
+<p><br>
+</p>
+<div class="list-nospace">
 <ul>
-<li><p>Reactives are almost always used somewhere else in your app</p></li>
-<li><p>Reactives can be chained together to create a data processing pipeline</p></li>
-<li><p>Reactives can be ‘bound’ to specific events so they only update when something specific changes</p></li>
+<li>Reactives are always used somewhere else in your app<br>
+</li>
+<li>Reactives can be chained together to create a data processing pipeline<br>
+</li>
+<li>Reactives can be ‘bound’ to specific events so they only update when something specific changes<br>
+</li>
 </ul>
+</div>
 </section>
 <section id="app02.r-reactives---summary" class="slide level2 double-spaced-left">
 <h2><code>app02.R</code> Reactives - Summary</h2>

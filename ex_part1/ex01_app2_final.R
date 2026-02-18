@@ -36,9 +36,9 @@ server <- function(input, output, session) {
   
   ## -------- penguins_sub -------
   penguins_sub <- reactive({
-    penguins |> 
+    penguins |>
       filter(species == input$in_species,
-             island == input$in_island) |> 
+             island == input$in_island) |>
       slice_sample(prop = input$in_pct / 100)
   })
   
